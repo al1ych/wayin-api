@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 267.11 46.49">
+    <defs>
+        <style>.cls-1{fill:#8b62a6;}</style>
+    </defs>
+    <g id="Слой_2" data-name="Слой 2">
+        <g id="Слой_11" data-name="Слой 11">
+            <circle id="shop" class="cls-1" cx="20.97" cy="23.24" r="20.97"/>
+            <circle id="магазин" class="cls-1" cx="93.32" cy="23.24" r="20.97"/>
+            <circle id="shop_магазин" data-name="shop магазин" class="cls-1" cx="147.5" cy="23.24" r="23.24"/>
+            <circle id="shop_" data-name="shop &apos;" class="cls-1" cx="199.27" cy="26.3" r="20.18"/>
+            <circle id="магазин_" data-name="магазин &apos;" class="cls-1" cx="247.45" cy="26.3" r="19.66"/>
+        </g>
+    </g>
+</svg>

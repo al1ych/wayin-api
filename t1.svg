@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 315.4 212.77">
+    <defs>
+        <style>.cls-1{fill:none;stroke:#020202;stroke-miterlimit:10;stroke-width:2px;}</style>
+    </defs>
+    <g id="Слой_2" data-name="Слой 2">
+        <g id="Слой_10" data-name="Слой 10">
+            <line class="cls-1" x1="1.94" y1="1" x2="1.94" y2="143.95"/>
+            <line class="cls-1" x1="73.24" y1="1" x2="73.24" y2="143.95"/>
+            <line class="cls-1" x1="104.69" y1="1" x2="104.69" y2="143.95"/>
+            <rect class="cls-1" x="135.1" y="1" width="72.35" height="142.95"/>
+            <rect class="cls-1" x="246.25" y="1" width="68.16" height="142.95"/>
+            <line class="cls-1" x1="1.94" y1="162.49" x2="51.04" y2="211.59"/>
+            <line class="cls-1" x1="51.04" y1="160.02" x2="0.71" y2="210.36"/>
+            <line class="cls-1" x1="155.11" y1="162.4" x2="105.92" y2="211.59"/>
+            <path class="cls-1" d="M239.26,162.49l-85.37-.09"/>
+            <path class="cls-1" d="M239.26,211.59H105.92"/>
+            <line class="cls-1" x1="239.26" y1="161.54" x2="239.26" y2="212.46"/>
+            <line class="cls-1" x1="85.82" y1="160.02" x2="85.82" y2="212.46"/>
+            <line class="cls-1" x1="85.82" y1="161.21" x2="85.82" y2="212.77"/>
+        </g>
+    </g>
+</svg>

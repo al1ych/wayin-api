@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>svg2map</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+<input type="file" name="inputfile"
+       id="inputfile" style="position: fixed; left: 8px;">
+<input name="inputfile"
+       id="accuracy_holder" style="position: fixed; right: 0; top: 50px;" value="10" placeholder="accuracy (1-100)">
+<input name="inputfile"
+       id="grid_accuracy_holder" style="position: fixed; right: 0; top: 75px;" value="30"
+       placeholder="grid accuracy (1-40)">
+<br>
+
+<script type="text/javascript">
+    document.getElementById('inputfile')
+        .addEventListener('change', function ()
+        {
+            var fr = new FileReader();
+            fr.onload = function ()
+            {
+                geom2map(fr.result);
+            };
+
+            fr.readAsText(this.files[0]);
+        });
+
+    window.ca = undefined;
+    window.ctx = undefined;
+    window.onload = function ()
+    {
+        ca = document.getElementById("ca");
+        ctx = ca.getContext("2d");
+    };
+
+
+    // todo drag drop
+    // todo auto name
+
+    function geom2map(t)
+    {
+        console.time("benchmark");
+
+        ctx.clearRect(0, 0, ca.width, ca.height);
+
+        console.log("length of the file:", t.length);
+        let total_walls = 0;
+        const substitution = {
+            ',': ' '
+        };
+        const accuracy = document.getElementById("accuracy_holder").value;
+        window.geom_map = {
+            shops: [],
+            walls: [],
+        };
+        // window.java_code_output = "let map_" +
+        //     document.getElementById("input_map_name").value +
+        //     " {shops: [";
+        // window.java_code_output = "public static final GeomMap map_" +
+        //     document.getElementById("input_map_name").value +
+        //     " = new GeomMap(Arrays.asList(";
+
+        // find shops
+        // process circles
+        let s = t;
+        // let shops = [];
+        window.max_elem_x = -Infinity;
+        window.max_elem_y = -Infinity;
+        while (s.includes("<circle "))
+        {
+            let c_ind = s.indexOf("<circle ");
+            let sx = "", sy = "", sid = "";
+            let sdname = ""; // data-name
+
+            for (let i = c_ind + 8; i < s.length - 10; i++)
+            {
+                if (s.substr(i, 3) === 'cx=') // cx="..."
+                {
+                    for (let j = i + 4; j < s.length && s[j] !== '\"'; j++)
+                    {
+                        sx += s[j];
+                    }
+                }
+                else if (s.substr(i, 3) === 'cy=')
+                {
+                    for (let j = i + 4; j < s.length && s[j] !== '\"'; j++)
+                    {
+                        sy += s[j];
+                    }
+                    break;
+                }
+                else if (s.substr(i, 3) === 'id=')
+                {
+                    for (let j = i + 4; j < s.length && s[j] !== '\"'; j++)
+                    {
+                        sid += s[j];
+                    }
+                }
+                else if (s.substr(i, 10) === 'data-name=')
+                {
+                    for (let j = i + 11; j < s.length && s[j] !== '\"'; j++)
+                    {
+                        sdname += s[j];
+                    }
+                }
+            }
+
+            let shop_name = (sdname === "" ? sid : sdname);
+            if (shop_name !== "")
+            {
+                console.log('shop x y shop_name', sx, sy, shop_name);
+                // window.java_code_output += `new Shop("${shop_name}", ${sx}*1., ${sy}*1.), `;
+                window.geom_map.shops.push({name: shop_name, tag: `${sx},${sy}`, x: sx, y: sy});
+                max_elem_x = Math.max(max_elem_x, sx);
+                max_elem_y = Math.max(max_elem_y, sy);
+
+                const sz = 5;
+                ctx.beginPath();
+                ctx.fillRect(sx - sz / 2, sy - sz / 2, sz, sz);
+                ctx.fillText(shop_name, parseFloat(sx), parseFloat(sy));
+                ctx.stroke();
+            }
+
+            s = s.substr(0, c_ind) + s.substr(c_ind + 1);
+            console.log('line to remove:', s[c_ind]);
+        }
+
+
+        // find walls
+        // process paths
+        // window.java_code_output += "), \nArrays.asList(";
+        s = t;
+        while (s.includes(" d="))
+        {
+            total_walls++;
+
+            let d = s.indexOf(" d=");
+            d += 4;
+            let path = s[d];
+            for (let i = d + 1; i < s.length && s[i] !== '\"'; i++)
+            {
+                path += (substitution[s[i]] === undefined ? s[i] : substitution[s[i]]);
+            }
+
+            console.log('path', path);
+
+            console.log('starting drawing it out...');
+            document.getElementById("src2").setAttribute("d", path);
+            decompose_svg(src2, accuracy);
+
+            s = s.substr(0, d - 4 + 1) + s.substr(d - 4 + 1 + 1);
+            console.log('to remove:', s[d - 4]);
+        }
+        // process lines
+        s = t;
+        while (s.includes("<line "))
+        {
+            total_walls++;
+
+            let l = s.indexOf("<line ");
+            let x1 = "", y1 = "", x2 = "", y2 = "";
+            for (let i = l + 6; i < s.length - 1; i++)
+            {
+                if (s.substr(i, 2) === 'x1') // x1="..."
+                {
+                    for (let j = i + 4; j < s.length && s[j] !== '\"'; j++)
+                    {
+                        x1 += s[j];
+                    }
+                }
+                else if (s.substr(i, 2) === 'y1')
+                {
+                    for (let j = i + 4; j < s.length && s[j] !== '\"'; j++)
+                    {
+                        y1 += s[j];
+                    }
+                }
+                else if (s.substr(i, 2) === 'x2')
+                {
+                    for (let j = i + 4; j < s.length && s[j] !== '\"'; j++)
+                    {
+                        x2 += s[j];
+                    }
+                }
+                else if (s.substr(i, 2) === 'y2')
+                {
+                    for (let j = i + 4; j < s.length && s[j] !== '\"'; j++)
+                    {
+                        y2 += s[j];
+                    }
+                    break;
+                }
+            }
+
+            // window.java_code_output += `new Wall(${x1}*1., ${y1}*1., ${x2}*1., ${y2}*1.), `;
+            window.geom_map.walls.push({x1, y1, x2, y2});
+
+            console.log('line', x1, y1, x2, y2);
+            console.log('draw line');
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
+
+            s = s.substr(0, l) + s.substr(l + 1);
+            console.log('line to remove:', s[l]);
+        }
+
+
+        // adding grid
+        let GRID_ACCURACY = parseFloat(document.getElementById("grid_accuracy_holder").value); // dx, dy  grid step
+        const GRID_DENSITY = 5;
+        for (let y = 0; y <= max_elem_y + GRID_ACCURACY; y += GRID_ACCURACY)
+        {
+            for (let x = 0; x <= max_elem_x + GRID_ACCURACY; x += GRID_ACCURACY)
+            {
+                for (let t = 0; t < GRID_DENSITY; t++)
+                {
+                    // ghost shop - grid node
+                    let sh_c = {
+                        shop_name: "",
+                        sx: x + Math.random() * GRID_ACCURACY,
+                        sy: y + Math.random() * GRID_ACCURACY,
+                    };
+                    window.geom_map.shops.push({
+                        name: sh_c.shop_name,
+                        tag: `${sh_c.sx},${sh_c.sy}`,
+                        x: sh_c.sx,
+                        y: sh_c.sy
+                    });
+                    const sz = 1;
+                    ctx.beginPath();
+                    // styling ghost shops
+                    // ctx.strokeStyle = '#ff0000';
+                    // styling ghost shops
+                    ctx.fillRect(sh_c.sx - sz / 2, sh_c.sy - sz / 2, sz, sz);
+                    ctx.fillText(sh_c.shop_name, parseFloat(sh_c.sx), parseFloat(sh_c.sy));
+                    ctx.stroke();
+                }
+            }
+        }
+
+        // document.getElementById("output_java_code").textContent = JSON.stringify(window.geom_map);
+        console.log('total walls:', total_walls);
+
+        pedir_map2graph(window.geom_map);
+    }
+
+
+    function choose_shop(randomly)
+    {
+        if (randomly === true || randomly === undefined)
+        {
+            let rand_ind = Math.floor(Math.random() * window.geom_map.shops.length) % window.geom_map.shops.length;
+
+            ctx.beginPath();
+            const sz = 10;
+            // ctx.fillStyle = '#ff3000';
+            ctx.fillStyle = '#5bc5ff';
+            ctx.fillRect(window.geom_map.shops[rand_ind].x - sz / 2,
+                window.geom_map.shops[rand_ind].y - sz / 2,
+                sz, sz);
+            ctx.stroke();
+
+            return window.geom_map.shops[rand_ind];
+        }
+    }
+
+
+    function pedir_map2graph()
+    {
+        console.time("map2graph time");
+        console.log('starting pidiendo map2graph');
+        console.log('estimated time:', ((window.geom_map.shops.length + window.geom_map.walls.length) / 5707) * (199780), 'ms');
+        console.log(`map elements: ${window.geom_map.shops.length} + ${window.geom_map.walls.length} = ${window.geom_map.shops.length + window.geom_map.walls.length}`);
+
+        let from_shop = choose_shop();
+        let to_shop = choose_shop();
+
+        $.ajax({
+            type: 'POST',
+            url: '/map2graph',
+            data: JSON.stringify(window.geom_map),
+            dataType: 'json',
+            contentType: "application/json",
+        }).done(response =>
+        {
+            console.timeEnd("map2graph time");
+
+            console.log('done => input', JSON.stringify(window.geom_map));
+            console.log('done => i got output', response);
+
+            document.getElementById("output_java_code").textContent = JSON.stringify(response);
+            alert('graph size: ' + JSON.stringify(response).length);
+
+            console.log(`names ${from_shop.name} -> ${to_shop.name}`);
+
+            pedir_path(response, from_shop.tag, to_shop.tag);
+            const job_count = 10;
+            for (let i = 0; i < job_count - 1; i++)
+            {
+                from_shop = choose_shop(); to_shop = choose_shop();
+                pedir_path(response, from_shop.tag, to_shop.tag);
+            }
+        });
+    }
+
+
+    function pedir_path(graph, start, target)
+    {
+        console.log('starting pidiendo the path');
+        console.log(`from ${start} to ${target}`);
+        console.log('current graph state:', graph);
+        console.time("pedir_path time");
+
+        $.ajax({
+            type: 'POST',
+            url: '/path_ab',
+            data: JSON.stringify({graph: JSON.stringify(graph), start, target}),
+            dataType: 'json',
+            contentType: "application/json",
+        }).done(response =>
+        {
+            console.timeEnd("pedir_path time");
+            console.log('pedir_path done => response:', response);
+
+            if (response.target_reachable === false)
+            {
+                alert(`cannot get from ${start} to ${target}`);
+                return;
+            }
+
+            let path = response.bp.map(c => c.split(',').map(x => parseFloat(x)));
+            console.log('transform path', path);
+            draw_path(path);
+        });
+    }
+
+
+    function draw_path(p)
+    {
+        ctx.beginPath();
+        // stroke styling
+        var gradient = ctx.createLinearGradient(0, 0, 170, 0);
+        gradient.addColorStop("0", "magenta");
+        gradient.addColorStop("0.5", "blue");
+        gradient.addColorStop("1.0", "red");
+        ctx.lineCap = 'round';
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = gradient;
+        //stroke styling
+        ctx.moveTo(p[0][0], p[0][1]);
+        for (let i = 1; i < p.length; i++)
+        {
+            ctx.lineTo(p[i][0], p[i][1]);
+        }
+        ctx.stroke();
+
+        console.timeEnd("benchmark");
+        console.log(`map elements: ${window.geom_map.shops.length} + ${window.geom_map.walls.length} = ${window.geom_map.shops.length + window.geom_map.walls.length}`);
+    }
+
+
+    function decompose_svg(path, num)
+    {
+        var l = path.getTotalLength();
+        var p = path.getPointAtLength(0);
+        var d = `M${p.x} ${p.y}`;
+        var pp;
+        ctx.beginPath();
+        // ctx.moveTo(p.x, p.y);
+        for (var i = (l / num); i <= l; i += (l / num))
+        {
+            p = path.getPointAtLength(i);
+            d += `L${p.x} ${p.y}`;
+            ctx.lineTo(p.x, p.y);
+            // window.java_code_output += (pp !== undefined ? `new Wall(${pp.x}*1., ${pp.y}*1., ${p.x}*1., ${p.y}*1.), ` : "");
+            if (pp !== undefined)
+            {
+                window.geom_map.walls.push({x1: pp.x, y1: pp.y, x2: p.x, y2: p.y});
+                window.max_elem_x = Math.max(max_elem_x, p.x);
+                window.max_elem_y = Math.max(max_elem_y, p.y);
+            }
+            pp = p;
+        }
+        ctx.stroke();
+        path.setAttribute("d", d + "z")
+    }
+</script>
+
+
+<textarea id="output_java_code"
+          style="width: 99%;
+          height: 5%;
+          opacity: 60%;
+          position: fixed;
+          left: 4px;
+          bottom: 5%;
+          visibility: visible;
+          resize: none;"
+          placeholder="jsoned graph will pop up in here" ></textarea>
+<input id="input_map_name" placeholder="map name" style="position: fixed; right: 0;"/>
+<br/>
+<canvas id="ca" width="3000" height="3000" style="border: 1px dashed rgba(110,110,110,0.1);"></canvas>
+<br/>
+
+<svg style="visibility: hidden" width="1" height="1" viewBox="0 0 1 1" fill="none" stroke="black" stroke-width="5">
+    <path id="src2" d="M100 10 A90 90 0 0 0 100 190A90 90 0 0 0 100 10z"/>
+</svg>
+
+
+</body>
+</html>
+

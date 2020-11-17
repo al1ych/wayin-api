@@ -1,0 +1,27 @@
+{
+  "name": "wayin",
+  "version": "1.0.0",
+  "description": "wayin api",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --experimental-worker server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/al1ych/wayin_api.git"
+  },
+  "author": "aladdinych",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/al1ych/wayin_api/issues"
+  },
+  "homepage": "https://github.com/al1ych/wayin_api#readme",
+  "dependencies": {
+    "collections": "^5.1.12",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "cors": "^2.8.5"
+  }
+}

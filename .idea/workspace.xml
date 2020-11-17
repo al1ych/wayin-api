@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3ffdaad2-8c53-4cb6-b213-7b580772ac6e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/svg2map.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/svg2map.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1jC1cI7d5u0HWEwB7wxboiYOkuU" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.15.3" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/public" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3ffdaad2-8c53-4cb6-b213-7b580772ac6e" name="Default Changelist" comment="" />
+      <created>1603293338156</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1603293338156</updated>
+      <workItem from="1603293342143" duration="1904000" />
+      <workItem from="1603301842739" duration="111000" />
+      <workItem from="1603311867476" duration="431000" />
+      <workItem from="1603351107027" duration="7949000" />
+      <workItem from="1603370809541" duration="12000" />
+      <workItem from="1603521108981" duration="65000" />
+      <workItem from="1603566004311" duration="8233000" />
+      <workItem from="1603626290038" duration="17000" />
+      <workItem from="1603633260396" duration="548000" />
+      <workItem from="1603640327533" duration="10997000" />
+      <workItem from="1603736563629" duration="9000" />
+      <workItem from="1604329897201" duration="4832000" />
+      <workItem from="1604340828768" duration="380000" />
+      <workItem from="1604748432993" duration="57533000" />
+      <workItem from="1605101583047" duration="690000" />
+      <workItem from="1605182006803" duration="9009000" />
+      <workItem from="1605460562150" duration="1647000" />
+      <workItem from="1605528812195" duration="355000" />
+    </task>
+    <task id="LOCAL-00001" summary="+cors">
+      <created>1603311929978</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1603311929978</updated>
+    </task>
+    <task id="LOCAL-00002" summary="+cors">
+      <created>1603312241913</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1603312241913</updated>
+    </task>
+    <task id="LOCAL-00003" summary="-cors in code">
+      <created>1603312359210</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1603312359210</updated>
+    </task>
+    <task id="LOCAL-00004" summary="+path_ab method">
+      <created>1603363688021</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1603363688022</updated>
+    </task>
+    <task id="LOCAL-00005" summary="+svg2map">
+      <created>1603572775295</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1603572775295</updated>
+    </task>
+    <task id="LOCAL-00006" summary="bug когда все файлы в одну строчкуне работают">
+      <created>1603645170931</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1603645170931</updated>
+    </task>
+    <task id="LOCAL-00007" summary="+ identifies shops now">
+      <created>1603724860296</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1603724860296</updated>
+    </task>
+    <task id="LOCAL-00008" summary="+ accuracy field">
+      <created>1603726256985</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1603726256985</updated>
+    </task>
+    <task id="LOCAL-00009" summary="java code field now takes up less spcae">
+      <created>1603727325701</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1603727325701</updated>
+    </task>
+    <task id="LOCAL-00010" summary="-Map +GeomMap">
+      <created>1604330818043</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1604330818043</updated>
+    </task>
+    <task id="LOCAL-00011" summary="-Map +GeomMap">
+      <created>1604330867221</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1604330867221</updated>
+    </task>
+    <task id="LOCAL-00012" summary="shop double coords">
+      <created>1604331239147</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1604331239148</updated>
+    </task>
+    <task id="LOCAL-00013" summary="server path + graph arg">
+      <created>1604331570662</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1604331570662</updated>
+    </task>
+    <task id="LOCAL-00014" summary="server path + graph arg">
+      <created>1604332130974</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1604332130974</updated>
+    </task>
+    <task id="LOCAL-00015" summary="- ghost shops">
+      <created>1604333307709</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1604333307709</updated>
+    </task>
+    <task id="LOCAL-00016" summary="+ grid">
+      <created>1604338986882</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1604338986882</updated>
+    </task>
+    <task id="LOCAL-00017" summary="+rgrid&#10;+optimized route algorithm&#10;+example user interface on client side">
+      <created>1605182229957</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1605182229957</updated>
+    </task>
+    <task id="LOCAL-00018" summary="+ long polling">
+      <created>1605201984403</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1605201984406</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="+cors" />
+    <MESSAGE value="-cors in code" />
+    <MESSAGE value="+path_ab method" />
+    <MESSAGE value="+svg2map" />
+    <MESSAGE value="bug когда все файлы в одну строчкуне работают" />
+    <MESSAGE value="+ identifies shops now" />
+    <MESSAGE value="+ accuracy field" />
+    <MESSAGE value="java code field now takes up less spcae" />
+    <MESSAGE value="-Map +GeomMap" />
+    <MESSAGE value="shop double coords" />
+    <MESSAGE value="server path + graph arg" />
+    <MESSAGE value="- ghost shops" />
+    <MESSAGE value="+ grid" />
+    <MESSAGE value="+rgrid&#10;+optimized route algorithm&#10;+example user interface on client side" />
+    <MESSAGE value="+ long polling" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ long polling" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604770160931">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1604770160931" />
+    <state x="439" y="260" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603641314244">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="439" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1603641314244" />
+    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1605201984182">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1605201984182" />
+    <state width="1419" height="327" key="GridCell.Tab.0.bottom" timestamp="1605209094994">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="327" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1605209094994" />
+    <state width="1419" height="327" key="GridCell.Tab.0.center" timestamp="1605209094993">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="327" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1605209094993" />
+    <state width="1419" height="327" key="GridCell.Tab.0.left" timestamp="1605209094993">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="327" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1605209094993" />
+    <state width="1419" height="327" key="GridCell.Tab.0.right" timestamp="1605209094994">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="327" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1605209094994" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1605201988179">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1605201988179" />
+    <state x="385" y="210" key="run.anything.popup" timestamp="1603358962621">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="210" key="run.anything.popup/0.0.1440.900@0.0.1440.900" timestamp="1603358962621" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1604943402781">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1604943402781" />
+  </component>
+</project>

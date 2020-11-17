@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 95.38 76.07">
+    <defs>
+        <style>
+            .cls-1{fill:#bab9b9;stroke:#e2e0e0;stroke-miterlimit:10;stroke-width:2px;}.cls-2{fill:#a5a4a3;}.cls-3{fill:#8b62a6;}.cls-4{font-size:5px;fill:#1d1d1b;font-family:Arial-Black,
+            Arial Black;font-weight:800;}
+        </style>
+    </defs>
+    <g id="Слой_2" data-name="Слой 2">
+        <g id="Слой_1-2" data-name="Слой 1">
+            <polygon class="cls-1" points="1 1 29.08 1 29.08 51.15 10.45 60.6 1 36.3 1 1"/>
+        </g>
+        <g id="Слой_2-2" data-name="Слой 2">
+            <polygon class="cls-2"
+                     points="36.49 34.16 36.49 10.33 53.2 10.33 53.2 8.74 34.45 8.74 34.45 32.57 40.76 48.97 41.95 48.36 36.49 34.16"/>
+        </g>
+        <g id="Слой_3" data-name="Слой 3">
+            <circle class="cls-3" cx="58.52" cy="39.23" r="3.5"/>
+        </g>
+        <g id="Слой_4" data-name="Слой 4">
+            <text class="cls-4" transform="translate(53.2 21.83)">Л’этуаль</text>
+        </g>
+        <g id="Слой_5" data-name="Слой 5">
+            <rect x="53.06" y="69.22" width="12.15" height="4.76" rx="1.46"/>
+            <rect x="57.25" y="64.29" width="3.75" height="2.14" rx="1.07"/>
+            <rect x="51.89" y="72.13" width="6.26" height="1.62" rx="0.73"
+                  transform="translate(-17.92 127.97) rotate(-90)"/>
+            <rect x="51.74" y="67.82" width="6.26" height="0.99" rx="0.49"
+                  transform="translate(141.46 54.95) rotate(120)"/>
+            <rect x="55.68" y="65.5" width="6.88" height="0.99" rx="0.49"
+                  transform="translate(118.24 131.99) rotate(-180)"/>
+            <rect x="60.26" y="67.82" width="6.26" height="0.99" rx="0.49"
+                  transform="matrix(0.5, 0.87, -0.87, 0.5, 90.85, -20.74)"/>
+            <rect x="60.07" y="72.13" width="6.26" height="1.62" rx="0.73"
+                  transform="translate(-9.74 136.14) rotate(-90)"/>
+        </g>
+    </g>
+</svg>
