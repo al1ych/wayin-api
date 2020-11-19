@@ -77,24 +77,29 @@ app.post('/map2graph', async (req, res) =>
 app.post('/path_ab', async function (req, res)
 {
     let params = req.body;
-    console.log('/path_ab params', params.provide_coord2name, typeof params.provide_coord2name);
+    console.log('/path_ab params', params.provide_geocoding, typeof params.provide_geocoding);
     if (params.graph === undefined || params.start === undefined)
     {
         return res.send("error: wrong format. refer to /doc for more info.");
     }
-    let start_name = params.start;
-    let target_name = params.target;
+    let start_tag = params.start;
+    let target_tag = params.target;
     params.graph = JSON.parse(params.graph);
     console.log('graph type', typeof params.graph);
     // for (let key in params.graph)
     // {
     //     console.log('key', key, params.graph[key]);
     // }
-    if (params.provide_coord2name)
+    if (params.provide_geocoding == true) //!!! == and not === !!!
     {
-        console.log('!!! provide coord2name: ', params.provide_coord2name);
+        console.log('!!!!! provide_geocoding: ', params.provide_geocoding);
+        // => name2tag
+        let geocode = geocoder.name2tag(params.graph, [start_tag, target_tag]);
+        start_tag = geocode[0];
+        target_tag = geocode[1];
+        console.log('geocode results: name2tag: ', [start_tag, target_tag]);
     }
-    let alg_res = alg.dijkstra(params.graph, start_name, target_name);
+    let alg_res = alg.dijkstra(params.graph, start_tag, target_tag);
     // let alg_res = alg.dijkstra(alg.test_graph, params.start, params.target);
     return res.send(alg_res);
 });

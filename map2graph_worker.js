@@ -1,3 +1,5 @@
+let LocalStorage = require('node-localstorage').LocalStorage;
+
 const max_direct_shop_distance = 65;
 
 // GEOM
@@ -72,11 +74,18 @@ let addEdge = function (g, f, t, c)
 // takes map (geom) :
 // returns graph
 // todo reduce time complexity n^3 -> n^2
+
+let storage_tag2name = new LocalStorage('./storage_tag2name');
+let storage_name2tag = new LocalStorage('./storage_name2tag');
+
 let map2graph = function ({shops, walls})
 {
     console.log('starting map2graph', {shops_len: shops.length, walls_len: walls.length});
     console.log('estimated time:', ((shops.length + walls.length) / 5707) * (199780), 'ms');
     console.time('map2graph');
+
+    // localStorage.setItem('myFirstKey', 'myFirstValue');
+    // console.log(localStorage.getItem('myFirstKey'));
 
     // let shops = map.shops;
     // let walls = map.walls;
@@ -116,13 +125,20 @@ let map2graph = function ({shops, walls})
 
     console.timeEnd('map2graph');
     console.log('finishing map2graph', shops.length, walls.length, counter);
+    shops.forEach(s =>
+    {
+        storage_tag2name.setItem(s.tag, s.name);
+        storage_name2tag.setItem(s.name, s.tag);
+    });
     return graph;
 };
 
 
 const {isMainThread, workerData, parentPort} = require('worker_threads');
 if (!isMainThread)
+{
     parentPort.postMessage(JSON.stringify(map2graph(workerData)));
+}
 
 
 // module.exports = {

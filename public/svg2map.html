@@ -258,17 +258,38 @@
         if (randomly === true || randomly === undefined)
         {
             let rand_ind = Math.floor(Math.random() * window.geom_map.shops.length) % window.geom_map.shops.length;
+            let found = false;
 
-            ctx.beginPath();
-            const sz = 10;
-            // ctx.fillStyle = '#ff3000';
-            ctx.fillStyle = '#5bc5ff';
-            ctx.fillRect(window.geom_map.shops[rand_ind].x - sz / 2,
-                window.geom_map.shops[rand_ind].y - sz / 2,
-                sz, sz);
-            ctx.stroke();
+            for (let t = 0; t < 1e5; t++)
+            {
+                if (window.geom_map.shops[rand_ind].name === '')
+                {
+                    rand_ind = Math.floor(Math.random() * window.geom_map.shops.length) % window.geom_map.shops.length;
+                    found = true;
+                }
+                else
+                {
+                    break;
+                }
+            }
 
-            return window.geom_map.shops[rand_ind];
+            if (found)
+            {
+                ctx.beginPath();
+                const sz = 10;
+                // ctx.fillStyle = '#ff3000';
+                ctx.fillStyle = '#5bc5ff';
+                ctx.fillRect(window.geom_map.shops[rand_ind].x - sz / 2,
+                    window.geom_map.shops[rand_ind].y - sz / 2,
+                    sz, sz);
+                ctx.stroke();
+
+                return window.geom_map.shops[rand_ind];
+            }
+            else
+            {
+                alert('cannot choose shop!');
+            }
         }
     }
 
@@ -301,18 +322,19 @@
 
             console.log(`names ${from_shop.name} -> ${to_shop.name}`);
 
-            pedir_path(response, from_shop.tag, to_shop.tag);
+            pedir_path(response, from_shop.name, to_shop.name, true);
             const job_count = 10;
             for (let i = 0; i < job_count - 1; i++)
             {
-                from_shop = choose_shop(); to_shop = choose_shop();
-                pedir_path(response, from_shop.tag, to_shop.tag);
+                from_shop = choose_shop();
+                to_shop = choose_shop();
+                pedir_path(response, from_shop.name, to_shop.name, true);
             }
         });
     }
 
 
-    function pedir_path(graph, start, target)
+    function pedir_path(graph, start, target, provide_geocoding)
     {
         console.log('starting pidiendo the path');
         console.log(`from ${start} to ${target}`);
@@ -322,7 +344,7 @@
         $.ajax({
             type: 'POST',
             url: '/path_ab',
-            data: JSON.stringify({graph: JSON.stringify(graph), start, target}),
+            data: JSON.stringify({graph: JSON.stringify(graph), start, target, provide_geocoding}),
             dataType: 'json',
             contentType: "application/json",
         }).done(response =>
@@ -404,7 +426,7 @@
           bottom: 5%;
           visibility: visible;
           resize: none;"
-          placeholder="jsoned graph will pop up in here" ></textarea>
+          placeholder="jsoned graph will pop up in here"></textarea>
 <input id="input_map_name" placeholder="map name" style="position: fixed; right: 0;"/>
 <br/>
 <canvas id="ca" width="3000" height="3000" style="border: 1px dashed rgba(110,110,110,0.1);"></canvas>
