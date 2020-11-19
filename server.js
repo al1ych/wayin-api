@@ -11,6 +11,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const alg = require('./algos');
 const map2graph_worker = require('./map2graph_worker');
+const geocoder = require('./geocoder');
 
 
 // API INTERACTION INTERFACE
@@ -89,6 +90,10 @@ app.post('/path_ab', async function (req, res)
     // {
     //     console.log('key', key, params.graph[key]);
     // }
+    if (params.provide_coord2name)
+    {
+        console.log('!!! provide coord2name: ', params.provide_coord2name);
+    }
     let alg_res = alg.dijkstra(params.graph, start_name, target_name);
     // let alg_res = alg.dijkstra(alg.test_graph, params.start, params.target);
     return res.send(alg_res);
