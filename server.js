@@ -77,7 +77,7 @@ app.post('/map2graph', async (req, res) =>
 app.post('/path_ab', async function (req, res)
 {
     let params = req.body;
-    console.log('/path_ab params');
+    console.log('/path_ab params', params);
     if (params.graph === undefined || params.start === undefined)
     {
         return res.send("error: wrong format. refer to /doc for more info.");
