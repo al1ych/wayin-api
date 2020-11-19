@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ffdaad2-8c53-4cb6-b213-7b580772ac6e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/geocoder.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +91,7 @@
       <workItem from="1605182006803" duration="9009000" />
       <workItem from="1605460562150" duration="1647000" />
       <workItem from="1605528812195" duration="355000" />
-      <workItem from="1605768415035" duration="384000" />
+      <workItem from="1605768415035" duration="671000" />
     </task>
     <task id="LOCAL-00001" summary="+cors">
       <created>1603311929978</created>
@@ -221,7 +219,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605201984406</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="+ geocoder v0">
+      <created>1605768981254</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1605768981254</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,7 +249,8 @@
     <MESSAGE value="+ grid" />
     <MESSAGE value="+rgrid&#10;+optimized route algorithm&#10;+example user interface on client side" />
     <MESSAGE value="+ long polling" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ long polling" />
+    <MESSAGE value="+ geocoder v0" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ geocoder v0" />
   </component>
   <component name="WindowStateProjectService">
     <state x="320" y="115" key="#Notifications" timestamp="1605769013873">
