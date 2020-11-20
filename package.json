@@ -20,10 +20,10 @@
   "dependencies": {
     "collections": "^5.1.12",
     "express": "^4.17.1",
+    "node-localstorage": "^2.1.6",
     "store": "^2.0.12"
   },
   "devDependencies": {
-    "cors": "^2.8.5",
-    "node-localstorage": "^2.1.6"
+    "cors": "^2.8.5"
   }
 }
