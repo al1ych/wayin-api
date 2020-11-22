@@ -16,6 +16,11 @@
 <input name="inputfile"
        id="grid_accuracy_holder" style="position: fixed; right: 0; top: 75px;" value="30"
        placeholder="grid accuracy (1-40)">
+<button
+        id="draw_graph_button" style="position: fixed; right: 0; top: 100px;" value="30"
+        onclick="draw_graph()"
+>Draw graph from JSON
+</button>
 <br>
 
 <script type="text/javascript">
@@ -331,6 +336,36 @@
                 pedir_path(response, from_shop.name, to_shop.name, true);
             }
         });
+    }
+
+
+    function draw_graph(graph)
+    {
+        if (graph === undefined) // not specified
+        {
+            graph = JSON.parse(document.getElementById("output_java_code").value);
+        }
+
+        console.log('draw this graph:', graph);
+
+        for (f in graph)
+        {
+            let es = graph[f];
+
+            console.log({es});
+
+            for (let i = 0; i < es.length; i++)
+            {
+                let p1 = f.split(',').map(x => parseFloat(x));
+                let p2 = es[i].t.split(',').map(x => parseFloat(x));
+
+                ctx.beginPath();
+                ctx.moveTo(p1[0], p1[1]);
+                ctx.lineTo(p2[0], p2[1]);
+                ctx.stroke();
+            }
+
+        }
     }
 
 
