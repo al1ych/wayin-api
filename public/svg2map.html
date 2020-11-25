@@ -115,7 +115,6 @@
             if (shop_name !== "")
             {
                 console.log('shop x y shop_name', sx, sy, shop_name);
-                // window.java_code_output += `new Shop("${shop_name}", ${sx}*1., ${sy}*1.), `;
                 window.geom_map.shops.push({name: shop_name, tag: `${sx},${sy}`, x: sx, y: sy});
                 max_elem_x = Math.max(max_elem_x, sx);
                 max_elem_y = Math.max(max_elem_y, sy);
@@ -365,6 +364,7 @@
 
             // document.getElementById("output_java_code").textContent = JSON.stringify(response.graph);
             // document.getElementById("output_shops_code").textContent = JSON.stringify(response.shops);
+            window.output_json = JSON.stringify(response.graph);
             download_json(response.shops, `${window.geom_map.map_name}_n2t.json`);
             download_json(response.graph, `${window.geom_map.map_name}_map.json`);
 
@@ -400,7 +400,10 @@
     {
         if (graph === undefined) // not specified
         {
-            graph = JSON.parse(document.getElementById("output_java_code").value);
+            if (window.output_json)
+                graph = JSON.parse(window.output_json);
+            else
+                return;
         }
 
         console.log('draw this graph:', graph);
@@ -426,6 +429,7 @@
     }
 
 
+    const CLIENT_TOKEN = "tokeeFahngeisaela1raraup4Eu1Eitahghahkahf4AeCh3yuen2Ge9ahtoaneewchiekah6Eije0jee3quaey9omu7ahch2Ka7aey5poh3Geiphai3Nea9eiM9Ieyoi8thu2vaichagheo8thohCof4koo4aeRooghaiGhiVahShaengahDaiyohlseithaezaeteiThoo1awahr8ohMei5xe5evaezai3ma2gaemaireen5aKae4pkae2ePh2Quai4mahsuiP3gootie1epaevaiT5ooweichai1kie5iepohyasiewuangoongahphiechisup6ainaiheeH8kaeb9ee0eifahSheikeiDiegahcuwdie3eephaebahgu3aekaux8eeb5oDu5yaica0ahvi0fo7faeNg5aiRohwephuCeegh0ohlee4bahk3phi7uaciegh5Raejeithaa5ooghohzae8thu0IwoLeehaez4yaipaeSh3fierie1eete4fuseotoofoothoh4peiQuujoh7asahXaew8udievaKu4yohdeo0aeQueey8zi7Eem0eiMahl2fohroRooziedei1iejahph0evu5uophahthiphaepoh5vohR2BeZai9vooFoo9chaazohwooNgia6moh7chipoophiewohfah0zun9queepo0eirish8Nahs9chohc3theiWeeghaco7yoh6roohph9heyahphee2JaifeiphuzieTou1Iowee0Ii6choo9eethahf4Nee3itiathieph3aeshaipuo6yei4bee6hai3ey2OLahChe6eishahVaXi4aesa5ainekeigh3Shoh5auNeegamoh3phaChii3phaeTaiNuSheituzengah0peighaino3vue1eer5eihae6UtaeChaochoh9no0iquei7upoo8wieShai5aeshe3Xee4naphohcohz9uu4shahng3eR7rish1tazi1oob9Beichauvoozeeyowael6pah1lthah6oothohz3OoK1euru8ouJ3Vichohpheijai2loumiepahph3ReipohkecEeshiethue8che2ook7aeJoPhohchoht5oorulohkoom4thoh8Seeweiceu2tOicath5coothaiwaixae1Aigeed6IuPu6queesahkumieth6ahb5aeyeoh5ae";
     function pedir_path(graph, start, target, provide_geocoding)
     {
         console.log('starting pidiendo the path');
@@ -441,7 +445,8 @@
                 start,
                 target,
                 provide_geocoding,
-                map_name: window.geom_map.map_name
+                map_name: window.geom_map.map_name,
+                access_token: CLIENT_TOKEN,
             }),
             dataType: 'json',
             contentType: "application/json",
