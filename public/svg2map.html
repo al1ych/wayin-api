@@ -291,11 +291,12 @@
 
     function valid_token(token)
     {
+        console.log('checking validity of', token, 'length:', token.length);
         return token !== '' &&
             token !== undefined &&
             token !== "undefined" &&
             token !== null &&
-            token.length === 64 &&
+            // token.length === 64 &&
             token.substr(0, 3) === 'tok';
     }
 
@@ -314,14 +315,18 @@
         if (localStorage['token'] === undefined)
         {
             token = prompt("Enter access token:");
-            console.log('%ctoken:' + token, 'background: green; color: black;');
+            console.log('%ctoken: ' + token, 'background: green; color: black;');
             if (!valid_token(token))
             {
                 alert('invalid token');
+                delete localStorage['token'];
                 location.reload();
                 return;
             }
-            localStorage['token'] = token;
+            else
+            {
+                localStorage['token'] = token;
+            }
         }
         else
         {
@@ -329,6 +334,7 @@
             if (!valid_token(token))
             {
                 alert('invalid token');
+                delete localStorage['token'];
                 location.reload();
                 return;
             }
