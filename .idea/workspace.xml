@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ffdaad2-8c53-4cb6-b213-7b580772ac6e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/storage_name2tag/test1/%D0%90" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage_name2tag/test1/%D0%91" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage_name2tag/test1/%D0%94" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage_name2tag/test1/%D0%A1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/svg2map.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/svg2map.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +96,7 @@
       <workItem from="1605768415035" duration="5854000" />
       <workItem from="1605892413944" duration="470000" />
       <workItem from="1606073235548" duration="1349000" />
-      <workItem from="1606307719672" duration="11863000" />
+      <workItem from="1606307719672" duration="12671000" />
     </task>
     <task id="LOCAL-00001" summary="+cors">
       <created>1603311929978</created>
@@ -290,7 +287,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606318579126</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="- some clientside security">
+      <created>1606319743490</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1606319743490</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,7 +326,8 @@
     <MESSAGE value="+ each map is stored separately (server)" />
     <MESSAGE value="+ map_name cannot be empty" />
     <MESSAGE value="+ security token" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ security token" />
+    <MESSAGE value="- some clientside security" />
+    <option name="LAST_COMMIT_MESSAGE" value="- some clientside security" />
   </component>
   <component name="WindowStateProjectService">
     <state x="320" y="115" key="#Notifications" timestamp="1605769013873">
@@ -337,11 +342,11 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="439" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1605778399318" />
-    <state x="303" y="74" key="CommitChangelistDialog2" timestamp="1606318578900">
+    <state x="303" y="74" key="CommitChangelistDialog2" timestamp="1606319743327">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1606074581778" />
-    <state x="303" y="74" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1606318578900" />
+    <state x="303" y="74" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1606319743327" />
     <state width="1419" height="238" key="GridCell.Tab.0.bottom" timestamp="1606319318238">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
