@@ -270,8 +270,8 @@
             {
                 ctx.beginPath();
                 const sz = 10;
-                // ctx.fillStyle = '#ff3000';
-                ctx.fillStyle = '#5bc5ff';
+                ctx.fillStyle = '#ff3000';
+                // ctx.fillStyle = '#5bc5ff';
                 ctx.fillRect(window.geom_map.shops[rand_ind].x - sz / 2,
                     window.geom_map.shops[rand_ind].y - sz / 2,
                     sz, sz);
@@ -343,9 +343,6 @@
         console.log('estimated time:', ((window.geom_map.shops.length + window.geom_map.walls.length) / 5707) * (199780), 'ms');
         console.log(`map elements: ${window.geom_map.shops.length} + ${window.geom_map.walls.length} = ${window.geom_map.shops.length + window.geom_map.walls.length}`);
 
-        let from_shop = choose_shop();
-        let to_shop = choose_shop();
-
         $.ajax({
             type: 'POST',
             url: '/map2graph',
@@ -368,9 +365,8 @@
             download_json(response.shops, `${window.geom_map.map_name}_n2t.json`);
             download_json(response.graph, `${window.geom_map.map_name}_map.json`);
 
-            pedir_path(response.graph, from_shop.name, to_shop.name, true);
             const job_count = 20;
-            for (let i = 0; i < job_count - 1; i++)
+            for (let i = 0; i < job_count; i++)
             {
                 from_shop = choose_shop();
                 to_shop = choose_shop();
