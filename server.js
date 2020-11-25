@@ -54,12 +54,12 @@ app.post('/map2graph', async (req, res) =>
     {
         res.write(' ');
         console.log('refreshed connection (15s)');
-    }, 15 * 1000);
+    }, 8 * 1000);
 
     let alg_res;
     const worker = new Worker('./map2graph_worker.js', {workerData: params.map});
 
-    return res.end(await new Promise((resolve, reject) =>
+    let result = new Promise((resolve, reject) =>
     {
         worker.on('message', resolve);
         worker.on('error', reject);
@@ -67,7 +67,11 @@ app.post('/map2graph', async (req, res) =>
         {
             clearInterval(refresh_interval);
         });
-    }));
+    })
+        .catch(reason => {
+            console.log('REASON FOR PROMISE FAILURE', reason);
+        });
+    return res.end(await result);
 });
 
 
@@ -92,22 +96,28 @@ app.post('/path_ab', async function (req, res)
     }
 
     console.log('/path_ab params', params.provide_geocoding, typeof params.provide_geocoding);
-    if (params.graph === undefined || params.start === undefined)
+    if (/*params.graph === undefined || */params.start === undefined)
     {
         console.log('wrong format!');
         return res.end("error: wrong format. refer to /doc for more info.");
     }
 
     let map_name = params.map_name;
-    let storage_graph = new LocalStorage(`./storage_graph/`);
+    let storage_graph = new LocalStorage(`./storage_graph/`, Number.MAX_VALUE);
     let graph = storage_graph.getItem(map_name);
+    // params.graph = JSON.parse(params.graph);
+
     if (graph === null)
     {
         console.log('attempt to refer to graph that does not exist!');
         return res.end("there is no map with that map_name :(");
     }
 
-    // params.graph = JSON.parse(params.graph);
+    graph = JSON.parse(graph);
+
+    console.log("COMPARE!",
+        JSON.stringify(graph).substr(0, 10),
+        JSON.stringify(params.graph).substr(0, 10));
 
     let start_tag = params.start;
     let target_tag = params.target;
