@@ -115,10 +115,6 @@ app.post('/path_ab', async function (req, res)
 
     graph = JSON.parse(graph);
 
-    console.log("COMPARE!",
-        JSON.stringify(graph).substr(0, 10),
-        JSON.stringify(params.graph).substr(0, 10));
-
     let start_tag = params.start;
     let target_tag = params.target;
     console.log({map_name});

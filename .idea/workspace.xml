@@ -2,28 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ffdaad2-8c53-4cb6-b213-7b580772ac6e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/storage_graph/test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geocoder.js" beforeDir="false" afterPath="$PROJECT_DIR$/geocoder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map2graph_worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/map2graph_worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/svg2map.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/svg2map.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage_name2tag/test1/%D0%90" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage_name2tag/test1/%D0%91" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage_name2tag/test1/%D0%94" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage_name2tag/test1/%D0%A1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage_name2tag/test1/Calzedonia" beforeDir="false" afterPath="$PROJECT_DIR$/storage_name2tag/test/Calzedonia" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage_name2tag/test1/Falconeri" beforeDir="false" afterPath="$PROJECT_DIR$/storage_name2tag/test/Falconeri" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage_name2tag/test1/Laurel" beforeDir="false" afterPath="$PROJECT_DIR$/storage_name2tag/test/Laurel" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage_name2tag/test1/Starbucks" beforeDir="false" afterPath="$PROJECT_DIR$/storage_name2tag/test/Starbucks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage_name2tag/test1/Tru%20Trussardi" beforeDir="false" afterPath="$PROJECT_DIR$/storage_name2tag/test/Tru%20Trussardi" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage_name2tag/test1/Zara" beforeDir="false" afterPath="$PROJECT_DIR$/storage_name2tag/test/Zara" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage_name2tag/test2/Calzedonia" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage_name2tag/test2/Falconeri" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage_name2tag/test2/Laurel" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage_name2tag/test2/Starbucks" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage_name2tag/test2/Tru%20Trussardi" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage_name2tag/test2/Zara" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +95,7 @@
       <workItem from="1605768415035" duration="5854000" />
       <workItem from="1605892413944" duration="470000" />
       <workItem from="1606073235548" duration="1349000" />
-      <workItem from="1606307719672" duration="17451000" />
+      <workItem from="1606307719672" duration="17503000" />
     </task>
     <task id="LOCAL-00001" summary="+cors">
       <created>1603311929978</created>
@@ -355,7 +335,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606324905283</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="server now does not accept graph as a param&#10;now works">
+      <created>1606326570441</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1606326570441</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -363,7 +350,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="+ identifies shops now" />
     <MESSAGE value="+ accuracy field" />
     <MESSAGE value="java code field now takes up less spcae" />
     <MESSAGE value="-Map +GeomMap" />
@@ -388,7 +374,8 @@
     <MESSAGE value="+ web client now uses client token" />
     <MESSAGE value="+ shops are now red on web client" />
     <MESSAGE value="server now does not accept graph as a param" />
-    <option name="LAST_COMMIT_MESSAGE" value="server now does not accept graph as a param" />
+    <MESSAGE value="server now does not accept graph as a param&#10;now works" />
+    <option name="LAST_COMMIT_MESSAGE" value="server now does not accept graph as a param&#10;now works" />
   </component>
   <component name="WindowStateProjectService">
     <state x="320" y="115" key="#Notifications" timestamp="1605769013873">
@@ -403,31 +390,31 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="439" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1605778399318" />
-    <state x="303" y="74" key="CommitChangelistDialog2" timestamp="1606324905115">
+    <state x="303" y="74" key="CommitChangelistDialog2" timestamp="1606326570104">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1606074581778" />
-    <state x="303" y="74" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1606324905115" />
-    <state width="1419" height="95" key="GridCell.Tab.0.bottom" timestamp="1606326471107">
+    <state x="303" y="74" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1606326570104" />
+    <state width="1419" height="222" key="GridCell.Tab.0.bottom" timestamp="1606326606427">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1419" height="183" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1606074621632" />
-    <state width="1419" height="95" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1606326471107" />
-    <state width="1419" height="95" key="GridCell.Tab.0.center" timestamp="1606326471106">
+    <state width="1419" height="222" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1606326606427" />
+    <state width="1419" height="222" key="GridCell.Tab.0.center" timestamp="1606326606426">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1419" height="183" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1606074621630" />
-    <state width="1419" height="95" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1606326471106" />
-    <state width="1419" height="95" key="GridCell.Tab.0.left" timestamp="1606326471105">
+    <state width="1419" height="222" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1606326606426" />
+    <state width="1419" height="222" key="GridCell.Tab.0.left" timestamp="1606326606425">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1419" height="183" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1606074621630" />
-    <state width="1419" height="95" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1606326471105" />
-    <state width="1419" height="95" key="GridCell.Tab.0.right" timestamp="1606326471106">
+    <state width="1419" height="222" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1606326606425" />
+    <state width="1419" height="222" key="GridCell.Tab.0.right" timestamp="1606326606426">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1419" height="183" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1606074621631" />
-    <state width="1419" height="95" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1606326471106" />
+    <state width="1419" height="222" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1606326606426" />
     <state x="320" y="208" key="Vcs.Push.Dialog.v2" timestamp="1606322898992">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
