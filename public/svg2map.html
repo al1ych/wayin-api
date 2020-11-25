@@ -291,6 +291,13 @@
 
     function pedir_map2graph()
     {
+        if (window.geom_map.map_name === '')
+        {
+            alert('map name not set');
+            location.reload();
+            return;
+        }
+
         console.time("map2graph time");
         console.log('starting pidiendo map2graph');
         console.log('estimated time:', ((window.geom_map.shops.length + window.geom_map.walls.length) / 5707) * (199780), 'ms');
