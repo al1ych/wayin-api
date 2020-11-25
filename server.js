@@ -84,20 +84,18 @@ app.post('/path_ab', async function (req, res)
     }
     let start_tag = params.start;
     let target_tag = params.target;
+    let map_name = params.map_name;
     params.graph = JSON.parse(params.graph);
-    console.log('graph type', typeof params.graph);
-    // for (let key in params.graph)
-    // {
-    //     console.log('key', key, params.graph[key]);
-    // }
+    console.log({map_name});
     if (params.provide_geocoding == true) //!!! == and not === !!!
     {
-        console.log('!!!!! provide_geocoding: ', params.provide_geocoding);
+        console.log('!!! provide_geocoding: ', params.provide_geocoding);
         // => name2tag
-        let geocode = geocoder.name2tag(params.graph, [start_tag, target_tag]);
+        let geocode = geocoder.name2tag(map_name, [start_tag, target_tag]);
+        console.log('geocode before: name2tag: ', [start_tag, target_tag]);
         start_tag = geocode[0];
         target_tag = geocode[1];
-        console.log('geocode results: name2tag: ', [start_tag, target_tag]);
+        console.log('geocode after: name2tag: ', [start_tag, target_tag]);
     }
     let alg_res = alg.dijkstra(params.graph, start_tag, target_tag);
     // let alg_res = alg.dijkstra(alg.test_graph, params.start, params.target);

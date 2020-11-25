@@ -63,13 +63,8 @@
         window.geom_map = {
             shops: [],
             walls: [],
+            map_name: document.getElementById("input_map_name").value,
         };
-        // window.java_code_output = "let map_" +
-        //     document.getElementById("input_map_name").value +
-        //     " {shops: [";
-        // window.java_code_output = "public static final GeomMap map_" +
-        //     document.getElementById("input_map_name").value +
-        //     " = new GeomMap(Arrays.asList(";
 
         // find shops
         // process circles
@@ -139,7 +134,6 @@
 
         // find walls
         // process paths
-        // window.java_code_output += "), \nArrays.asList(";
         s = t;
         while (s.includes(" d="))
         {
@@ -203,7 +197,6 @@
                 }
             }
 
-            // window.java_code_output += `new Wall(${x1}*1., ${y1}*1., ${x2}*1., ${y2}*1.), `;
             window.geom_map.walls.push({x1, y1, x2, y2});
 
             console.log('line', x1, y1, x2, y2);
@@ -241,9 +234,6 @@
                     });
                     const sz = 1;
                     ctx.beginPath();
-                    // styling ghost shops
-                    // ctx.strokeStyle = '#ff0000';
-                    // styling ghost shops
                     ctx.fillRect(sh_c.sx - sz / 2, sh_c.sy - sz / 2, sz, sz);
                     ctx.fillText(sh_c.shop_name, parseFloat(sh_c.sx), parseFloat(sh_c.sy));
                     ctx.stroke();
@@ -251,7 +241,6 @@
             }
         }
 
-        // document.getElementById("output_java_code").textContent = JSON.stringify(window.geom_map);
         console.log('total walls:', total_walls);
 
         pedir_map2graph(window.geom_map);
@@ -293,7 +282,8 @@
             }
             else
             {
-                alert('cannot choose shop!');
+                // alert('cannot choose shop!');
+                console.log('%cCannot choose shop!', 'background: orange');
             }
         }
     }
@@ -319,23 +309,45 @@
         {
             console.timeEnd("map2graph time");
 
-            console.log('done => input', JSON.stringify(window.geom_map));
-            console.log('done => i got output', response);
+            // console.log('done => input', JSON.stringify(window.geom_map));
 
-            document.getElementById("output_java_code").textContent = JSON.stringify(response);
-            alert('graph size: ' + JSON.stringify(response).length);
+            console.log('%cShops: ' + JSON.stringify(response.shops), 'background: blue;');
+            console.log('%cGraph: ' + JSON.stringify(response.graph), 'background: cyan; color: black;');
 
-            console.log(`names ${from_shop.name} -> ${to_shop.name}`);
+            // document.getElementById("output_java_code").textContent = JSON.stringify(response.graph);
+            // document.getElementById("output_shops_code").textContent = JSON.stringify(response.shops);
 
-            pedir_path(response, from_shop.name, to_shop.name, true);
-            const job_count = 10;
+            download_json(response.shops, `${window.geom_map.map_name}_n2t.json`);
+            download_json(response.graph, `${window.geom_map.map_name}_map.json`);
+
+            // console.log(`%cGraph size ${JSON.stringify(response.graph).length}`, 'background: yellow; color: black');
+            // console.log(`names ${from_shop.name} -> ${to_shop.name}`);
+
+            pedir_path(response.graph, from_shop.name, to_shop.name, true);
+            const job_count = 20;
             for (let i = 0; i < job_count - 1; i++)
             {
                 from_shop = choose_shop();
                 to_shop = choose_shop();
-                pedir_path(response, from_shop.name, to_shop.name, true);
+                pedir_path(response.graph, from_shop.name, to_shop.name, true);
             }
         });
+    }
+
+
+    function download_json(o, file_name)
+    {
+        var a = document.createElement("a");
+        document.body.appendChild(a);
+        a.style = "display: none";
+        var json = JSON.stringify(o),
+            blob = new Blob([json], {type: "octet/stream"}),
+            url = window.URL.createObjectURL(blob);
+        a.href = url;
+        a.download = file_name;
+        a.click();
+        window.URL.revokeObjectURL(url);
+        a.remove();
     }
 
 
@@ -352,7 +364,7 @@
         {
             let es = graph[f];
 
-            console.log({es});
+            // console.log({es});
 
             for (let i = 0; i < es.length; i++)
             {
@@ -374,22 +386,28 @@
         console.log('starting pidiendo the path');
         console.log(`from ${start} to ${target}`);
         console.log('current graph state:', graph);
-        console.time("pedir_path time");
+        // console.time("pedir_path time");
 
         $.ajax({
             type: 'POST',
             url: '/path_ab',
-            data: JSON.stringify({graph: JSON.stringify(graph), start, target, provide_geocoding}),
+            data: JSON.stringify({
+                graph: JSON.stringify(graph),
+                start,
+                target,
+                provide_geocoding,
+                map_name: window.geom_map.map_name
+            }),
             dataType: 'json',
             contentType: "application/json",
         }).done(response =>
         {
-            console.timeEnd("pedir_path time");
+            // console.timeEnd("pedir_path time");
             console.log('pedir_path done => response:', response);
 
             if (response.target_reachable === false)
             {
-                alert(`cannot get from ${start} to ${target}`);
+                console.log(`%cCannot get from ${start} to ${target}`, 'background: red');
                 return;
             }
 
@@ -453,15 +471,25 @@
 
 
 <textarea id="output_java_code"
-          style="width: 99%;
+          style="width: 60%;
           height: 5%;
-          opacity: 60%;
+          opacity: 20%;
           position: fixed;
           left: 4px;
           bottom: 5%;
-          visibility: visible;
+          visibility: hidden;
           resize: none;"
           placeholder="jsoned graph will pop up in here"></textarea>
+<textarea id="output_shops_code"
+          style="width: 35%;
+          height: 5%;
+          opacity: 20%;
+          position: fixed;
+          right: 4px;
+          bottom: 5%;
+          visibility: hidden;
+          resize: none;"
+          placeholder="shops info"></textarea>
 <input id="input_map_name" placeholder="map name" style="position: fixed; right: 0;"/>
 <br/>
 <canvas id="ca" width="3000" height="3000" style="border: 1px dashed rgba(110,110,110,0.1);"></canvas>

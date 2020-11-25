@@ -75,10 +75,7 @@ let addEdge = function (g, f, t, c)
 // returns graph
 // todo reduce time complexity n^3 -> n^2
 
-let storage_tag2name = new LocalStorage('./storage_tag2name');
-let storage_name2tag = new LocalStorage('./storage_name2tag');
-
-let map2graph = function ({shops, walls})
+let map2graph = function ({shops, walls, map_name})
 {
     console.log('starting map2graph', {shops_len: shops.length, walls_len: walls.length});
     console.log('estimated time:', ((shops.length + walls.length) / 5707) * (199780), 'ms');
@@ -125,12 +122,20 @@ let map2graph = function ({shops, walls})
 
     console.timeEnd('map2graph');
     console.log('finishing map2graph', shops.length, walls.length, counter);
+    let shops_mapping = [];
+    let storage_tag2name = new LocalStorage(`./storage_tag2name/${map_name}/`);
+    let storage_name2tag = new LocalStorage(`./storage_name2tag/${map_name}/`);
     shops.forEach(s =>
     {
-        storage_tag2name.setItem(s.tag, s.name);
-        storage_name2tag.setItem(s.name, s.tag);
+        if (s.name !== '')
+        {
+            shops_mapping.push([s.name, s.tag]);
+            storage_name2tag.setItem(s.name, s.tag);
+            // storage_tag2name.setItem(s.tag, s.name);
+        }
     });
-    return graph;
+    console.log({shops_mapping});
+    return {graph, shops: shops_mapping};
 };
 
 
