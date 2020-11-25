@@ -123,7 +123,7 @@ let map2graph = function ({shops, walls, map_name})
     console.timeEnd('map2graph');
     console.log('finishing map2graph', shops.length, walls.length, counter);
     let shops_mapping = [];
-    let storage_tag2name = new LocalStorage(`./storage_tag2name/${map_name}/`);
+    // let storage_tag2name = new LocalStorage(`./storage_tag2name/${map_name}/`);
     let storage_name2tag = new LocalStorage(`./storage_name2tag/${map_name}/`);
     shops.forEach(s =>
     {
@@ -134,6 +134,8 @@ let map2graph = function ({shops, walls, map_name})
             // storage_tag2name.setItem(s.tag, s.name);
         }
     });
+    let storage_graph = new LocalStorage(`./storage_graph/`);
+    storage_graph.setItem(map_name, JSON.stringify(graph));
     console.log({shops_mapping});
     return {graph, shops: shops_mapping};
 };
