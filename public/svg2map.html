@@ -289,6 +289,16 @@
     }
 
 
+    function valid_token(token)
+    {
+        return token !== '' &&
+            token !== undefined &&
+            token !== "undefined" &&
+            token !== null &&
+            token.length === 64 &&
+            token.substr(0, 3) === 'tok';
+    }
+
     function pedir_map2graph()
     {
         if (window.geom_map.map_name === '')
@@ -296,6 +306,32 @@
             alert('map name not set');
             location.reload();
             return;
+        }
+
+        // delete localStorage['token']; // debug
+
+        let token;
+        if (localStorage['token'] === undefined)
+        {
+            token = prompt("Enter access token:");
+            console.log('%ctoken:' + token, 'background: green; color: black;');
+            if (!valid_token(token))
+            {
+                alert('invalid token');
+                location.reload();
+                return;
+            }
+            localStorage['token'] = token;
+        }
+        else
+        {
+            token = localStorage['token'];
+            if (!valid_token(token))
+            {
+                alert('invalid token');
+                location.reload();
+                return;
+            }
         }
 
         console.time("map2graph time");
@@ -309,26 +345,23 @@
         $.ajax({
             type: 'POST',
             url: '/map2graph',
-            data: JSON.stringify(window.geom_map),
+            data: JSON.stringify({
+                map: window.geom_map,
+                access_token: token,
+            }),
             dataType: 'json',
             contentType: "application/json",
         }).done(response =>
         {
             console.timeEnd("map2graph time");
 
-            // console.log('done => input', JSON.stringify(window.geom_map));
-
             console.log('%cShops: ' + JSON.stringify(response.shops), 'background: blue;');
             console.log('%cGraph: ' + JSON.stringify(response.graph), 'background: cyan; color: black;');
 
             // document.getElementById("output_java_code").textContent = JSON.stringify(response.graph);
             // document.getElementById("output_shops_code").textContent = JSON.stringify(response.shops);
-
             download_json(response.shops, `${window.geom_map.map_name}_n2t.json`);
             download_json(response.graph, `${window.geom_map.map_name}_map.json`);
-
-            // console.log(`%cGraph size ${JSON.stringify(response.graph).length}`, 'background: yellow; color: black');
-            // console.log(`names ${from_shop.name} -> ${to_shop.name}`);
 
             pedir_path(response.graph, from_shop.name, to_shop.name, true);
             const job_count = 20;
