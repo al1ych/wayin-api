@@ -6,11 +6,36 @@
     <title>svg2map</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-</head>
-<body>
+    <style>
+        #drop-area {
+            border: 2px dashed #ccc;
+            border-radius: 20px;
+            width: 360px;
+            height: 360px;
+            font-family: sans-serif;
+            right: 16px;
+            bottom: 16px;
+            position: fixed;
+            background-image: url(dd_img.png);
+            background-repeat: no-repeat;
+            background-position: center;
+        }
 
-<input type="file" name="inputfile"
-       id="inputfile" style="position: fixed; left: 8px;">
+        #inputfile {
+            bottom: 16px;
+        }
+
+        #drop-area.highlight {
+            border-color: purple;
+        }
+    </style>
+
+</head>
+
+<div id="drop-area">
+    <input type="file" name="inputfile"
+           id="inputfile" style="position: fixed; left: 8px;">
+</div>
 <input name="inputfile"
        id="accuracy_holder" style="position: fixed; right: 0; top: 50px;" value="10" placeholder="accuracy (1-100)">
 <input name="inputfile"
@@ -18,12 +43,39 @@
        placeholder="grid accuracy (1-40)">
 <button
         id="draw_graph_button" style="position: fixed; right: 0; top: 100px;" value="30"
-        onclick="draw_graph()"
->Draw graph from JSON
-</button>
+        onclick="draw_graph()">Graph connectivity map</button>
 <br>
 
 <script type="text/javascript">
+    // drag&drop
+    let dropArea = document.getElementById('drop-area');
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, preventDefaults, false)
+    });
+    function highlight(e) {
+        dropArea.classList.add('highlight')
+    }
+    function unhighlight(e) {
+        dropArea.classList.remove('highlight')
+    }
+    dropArea.addEventListener('drop', handleDrop, false);
+    function handleDrop(e) {
+        let dt = e.dataTransfer;
+        let files = dt.files;
+        let f = files[0];
+        let fr = new FileReader();
+        fr.onload = () => {
+            geom2map(fr.result);
+        };
+        fr.readAsText(f);
+    }
+    function preventDefaults(e)
+    {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    // file
     document.getElementById('inputfile')
         .addEventListener('change', function ()
         {
@@ -361,16 +413,16 @@
             // document.getElementById("output_java_code").textContent = JSON.stringify(response.graph);
             // document.getElementById("output_shops_code").textContent = JSON.stringify(response.shops);
             window.output_json = JSON.stringify(response.graph);
-            download_json(response.shops, `${window.geom_map.map_name}_n2t.json`);
-            download_json(response.graph, `${window.geom_map.map_name}_map.json`);
+            // download_json(response.shops, `${window.geom_map.map_name}_n2t.json`);
+            // download_json(response.graph, `${window.geom_map.map_name}_map.json`);
 
-            const job_count = 20;
-            for (let i = 0; i < job_count; i++)
-            {
-                from_shop = choose_shop();
-                to_shop = choose_shop();
-                pedir_path(response.graph, from_shop.name, to_shop.name, true);
-            }
+            // const job_count = 20;
+            // for (let i = 0; i < job_count; i++)
+            // {
+            // from_shop = choose_shop();
+            // to_shop = choose_shop();
+            // pedir_path(response.graph, from_shop.name, to_shop.name, true);
+            // }
         });
     }
 
@@ -396,9 +448,13 @@
         if (graph === undefined) // not specified
         {
             if (window.output_json)
+            {
                 graph = JSON.parse(window.output_json);
+            }
             else
+            {
                 return;
+            }
         }
 
         console.log('draw this graph:', graph);
@@ -425,12 +481,22 @@
 
 
     const CLIENT_TOKEN = "tokeeFahngeisaela1raraup4Eu1Eitahghahkahf4AeCh3yuen2Ge9ahtoaneewchiekah6Eije0jee3quaey9omu7ahch2Ka7aey5poh3Geiphai3Nea9eiM9Ieyoi8thu2vaichagheo8thohCof4koo4aeRooghaiGhiVahShaengahDaiyohlseithaezaeteiThoo1awahr8ohMei5xe5evaezai3ma2gaemaireen5aKae4pkae2ePh2Quai4mahsuiP3gootie1epaevaiT5ooweichai1kie5iepohyasiewuangoongahphiechisup6ainaiheeH8kaeb9ee0eifahSheikeiDiegahcuwdie3eephaebahgu3aekaux8eeb5oDu5yaica0ahvi0fo7faeNg5aiRohwephuCeegh0ohlee4bahk3phi7uaciegh5Raejeithaa5ooghohzae8thu0IwoLeehaez4yaipaeSh3fierie1eete4fuseotoofoothoh4peiQuujoh7asahXaew8udievaKu4yohdeo0aeQueey8zi7Eem0eiMahl2fohroRooziedei1iejahph0evu5uophahthiphaepoh5vohR2BeZai9vooFoo9chaazohwooNgia6moh7chipoophiewohfah0zun9queepo0eirish8Nahs9chohc3theiWeeghaco7yoh6roohph9heyahphee2JaifeiphuzieTou1Iowee0Ii6choo9eethahf4Nee3itiathieph3aeshaipuo6yei4bee6hai3ey2OLahChe6eishahVaXi4aesa5ainekeigh3Shoh5auNeegamoh3phaChii3phaeTaiNuSheituzengah0peighaino3vue1eer5eihae6UtaeChaochoh9no0iquei7upoo8wieShai5aeshe3Xee4naphohcohz9uu4shahng3eR7rish1tazi1oob9Beichauvoozeeyowael6pah1lthah6oothohz3OoK1euru8ouJ3Vichohpheijai2loumiepahph3ReipohkecEeshiethue8che2ook7aeJoPhohchoht5oorulohkoom4thoh8Seeweiceu2tOicath5coothaiwaixae1Aigeed6IuPu6queesahkumieth6ahb5aeyeoh5ae";
+
     function pedir_path(graph, start, target, provide_geocoding)
     {
         console.log('starting pidiendo the path');
         console.log(`from ${start} to ${target}`);
         console.log('current graph state:', graph);
         // console.time("pedir_path time");
+
+        if (start === undefined)
+        {
+            start = prompt("enter start shop name");
+        }
+        if (target === undefined)
+        {
+            target = prompt("enter target shop name");
+        }
 
         $.ajax({
             type: 'POST',
@@ -440,7 +506,9 @@
                 start,
                 target,
                 provide_geocoding,
-                map_name: window.geom_map.map_name,
+                // map_name: window.geom_map.map_name,
+                mname_start: document.getElementById("input_map_name").value + ":" + prompt("enter start floor"),
+                mname_target: document.getElementById("input_map_name").value + ":" + prompt("enter target floor"),
                 access_token: CLIENT_TOKEN,
             }),
             dataType: 'json',
@@ -536,6 +604,7 @@
           resize: none;"
           placeholder="shops info"></textarea>
 <input id="input_map_name" placeholder="map name" style="position: fixed; right: 0;"/>
+<button style="position: fixed; right: 0;" onclick="pedir_path(undefined, undefined, undefined, true)">-></button>
 <br/>
 <canvas id="ca" width="3000" height="3000" style="border: 1px dashed rgba(110,110,110,0.1);"></canvas>
 <br/>

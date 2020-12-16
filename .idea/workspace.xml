@@ -2,8 +2,90 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ffdaad2-8c53-4cb6-b213-7b580772ac6e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/dd_img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_graph/test%3A1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_graph/test%3A2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_graph/test%3A3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_name2tag/test:1/Calzedonia" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_name2tag/test:1/Falconeri" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_name2tag/test:1/Laurel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_name2tag/test:1/Starbucks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_name2tag/test:1/Tru%20Trussardi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_name2tag/test:1/Zara" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_name2tag/test:1/portal_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_name2tag/test:2/Calzedonia" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_name2tag/test:2/Falconeri" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_name2tag/test:2/Laurel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_name2tag/test:2/Starbucks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_name2tag/test:2/Tru%20Trussardi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_name2tag/test:2/Zara" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_name2tag/test:2/portal_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_name2tag/test:2/portal_2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_name2tag/test:3/Calzedonia" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_name2tag/test:3/Falconeri" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_name2tag/test:3/Laurel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_name2tag/test:3/Starbucks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_name2tag/test:3/Tru%20Trussardi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_name2tag/test:3/portal_1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_name2tag/test:3/portal_2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_tag2name/test:1/112.05%2C88.95" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_tag2name/test:1/121.55%2C135.15" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_tag2name/test:1/125.05%2C99.45" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_tag2name/test:1/139.55%2C113.35" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_tag2name/test:1/158.75%2C130.35" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_tag2name/test:1/178.25%2C147.55" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_tag2name/test:1/55.15%2C98.35" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_tag2name/test:2/112.05%2C88.84" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_tag2name/test:2/121.65%2C135.14" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_tag2name/test:2/125.15%2C99.44" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_tag2name/test:2/139.55%2C113.24" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_tag2name/test:2/158.75%2C130.34" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_tag2name/test:2/178.35%2C147.54" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_tag2name/test:2/55.25%2C98.24" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_tag2name/test:2/99.85%2C45.64" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_tag2name/test:3/100.77%2C40.42" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_tag2name/test:3/111.95%2C88.84" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_tag2name/test:3/125.05%2C99.44" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_tag2name/test:3/139.55%2C113.24" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_tag2name/test:3/158.65%2C130.34" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_tag2name/test:3/178.25%2C147.54" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage_tag2name/test:3/55.15%2C98.24" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test1.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test2.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test3.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algos.js" beforeDir="false" afterPath="$PROJECT_DIR$/algos.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map2graph_worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/map2graph_worker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/metropolis1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/metropolis1_10.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/metropolis1_3.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/metropolis1_5.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/metropolis1_6.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/metropolis1_9.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/svg2map.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/svg2map.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample.svg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shops.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage_graph/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage_name2tag/test/%D0%90" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage_name2tag/test/%D0%91" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage_name2tag/test/%D0%94" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage_name2tag/test/%D0%A1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage_name2tag/test/Calzedonia" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage_name2tag/test/Falconeri" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage_name2tag/test/Laurel" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage_name2tag/test/Starbucks" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage_name2tag/test/Tru%20Trussardi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage_name2tag/test/Zara" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/t.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/t1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test 2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/x.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ресурс 11.svg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +109,6 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -37,9 +118,12 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.15.3" />
+    <property name="javascript.nodejs.core.library.typings.version" value="10.17.49" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -64,6 +148,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -95,7 +180,10 @@
       <workItem from="1605768415035" duration="5854000" />
       <workItem from="1605892413944" duration="470000" />
       <workItem from="1606073235548" duration="1349000" />
-      <workItem from="1606307719672" duration="17503000" />
+      <workItem from="1606307719672" duration="18855000" />
+      <workItem from="1606815519198" duration="17000" />
+      <workItem from="1607794530308" duration="28810000" />
+      <workItem from="1608152689877" duration="3703000" />
     </task>
     <task id="LOCAL-00001" summary="+cors">
       <created>1603311929978</created>
@@ -342,11 +430,18 @@
       <option name="project" value="LOCAL" />
       <updated>1606326570441</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="server now does not accept graph as a param&#10;now works">
+      <created>1606326680539</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1606326680539</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -376,63 +471,5 @@
     <MESSAGE value="server now does not accept graph as a param" />
     <MESSAGE value="server now does not accept graph as a param&#10;now works" />
     <option name="LAST_COMMIT_MESSAGE" value="server now does not accept graph as a param&#10;now works" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="320" y="115" key="#Notifications" timestamp="1605769013873">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="320" y="115" key="#Notifications/0.0.1440.900@0.0.1440.900" timestamp="1605769013873" />
-    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604770160931">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1604770160931" />
-    <state x="439" y="260" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605778399318">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="439" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1605778399318" />
-    <state x="303" y="74" key="CommitChangelistDialog2" timestamp="1606326570104">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1606074581778" />
-    <state x="303" y="74" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1606326570104" />
-    <state width="1419" height="222" key="GridCell.Tab.0.bottom" timestamp="1606326606427">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state width="1419" height="183" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1606074621632" />
-    <state width="1419" height="222" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1606326606427" />
-    <state width="1419" height="222" key="GridCell.Tab.0.center" timestamp="1606326606426">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state width="1419" height="183" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1606074621630" />
-    <state width="1419" height="222" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1606326606426" />
-    <state width="1419" height="222" key="GridCell.Tab.0.left" timestamp="1606326606425">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state width="1419" height="183" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1606074621630" />
-    <state width="1419" height="222" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1606326606425" />
-    <state width="1419" height="222" key="GridCell.Tab.0.right" timestamp="1606326606426">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state width="1419" height="183" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1606074621631" />
-    <state width="1419" height="222" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1606326606426" />
-    <state x="320" y="208" key="Vcs.Push.Dialog.v2" timestamp="1606322898992">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1606074584911" />
-    <state x="320" y="208" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1606322898992" />
-    <state x="100" y="100" width="1240" height="700" key="com.intellij.dvcs.ui.CompareBranchesDialog" timestamp="1605768934712">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="100" y="100" width="1240" height="700" key="com.intellij.dvcs.ui.CompareBranchesDialog/0.0.1440.900@0.0.1440.900" timestamp="1605768934712" />
-    <state x="385" y="228" width="670" height="675" key="run.anything.popup" timestamp="1606316133983">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="385" y="210" key="run.anything.popup/0.0.1440.900@0.0.1440.900" timestamp="1606074276984" />
-    <state x="385" y="228" width="670" height="675" key="run.anything.popup/0.23.1440.877@0.23.1440.877" timestamp="1606316133983" />
-    <state x="385" y="214" width="670" height="659" key="search.everywhere.popup" timestamp="1606315034683">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1604943402781" />
-    <state x="385" y="214" width="670" height="659" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1606315034683" />
   </component>
 </project>

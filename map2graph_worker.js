@@ -79,7 +79,7 @@ let map2graph = function ({shops, walls, map_name})
 {
     console.log('starting map2graph', {shops_len: shops.length, walls_len: walls.length});
     // console.log('estimated time:', ((shops.length + walls.length) / 5707) * (199780), 'ms');
-    // console.time('map2graph');
+    console.time('map2graph');
 
     // localStorage.setItem('myFirstKey', 'myFirstValue');
     // console.log(localStorage.getItem('myFirstKey'));
@@ -120,10 +120,10 @@ let map2graph = function ({shops, walls, map_name})
         }
     }
 
-    // console.timeEnd('map2graph');
+    console.timeEnd('map2graph');
     console.log('finishing map2graph', shops.length, walls.length, counter);
     let shops_mapping = [];
-    // let storage_tag2name = new LocalStorage(`./storage_tag2name/${map_name}/`, Number.MAX_VALUE);
+    let storage_tag2name = new LocalStorage(`./storage_tag2name/${map_name}/`, Number.MAX_VALUE);
     let storage_name2tag = new LocalStorage(`./storage_name2tag/${map_name}/`, Number.MAX_VALUE);
     shops.forEach(s =>
     {
@@ -131,7 +131,7 @@ let map2graph = function ({shops, walls, map_name})
         {
             shops_mapping.push([s.name, s.tag]);
             storage_name2tag.setItem(s.name, s.tag);
-            // storage_tag2name.setItem(s.tag, s.name);
+            storage_tag2name.setItem(s.tag, s.name);
         }
     });
     let storage_graph = new LocalStorage(`./storage_graph/`, Number.MAX_VALUE);

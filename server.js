@@ -68,7 +68,8 @@ app.post('/map2graph', async (req, res) =>
             clearInterval(refresh_interval);
         });
     })
-        .catch(reason => {
+        .catch(reason =>
+        {
             console.log('REASON FOR PROMISE FAILURE', reason);
         });
     return res.end(await result);
@@ -85,6 +86,30 @@ app.post('/map2graph', async (req, res) =>
  *
  * returns distance from start to target (to every vertex if no target is provided)
  * */
+let valid_mapname = function (s)
+{
+    if (s === undefined)
+    {
+        return false;
+    }
+    return s.indexOf(":") !== -1;
+};
+
+let storage_graph = new LocalStorage(`./storage_graph/`, Number.MAX_VALUE);
+
+let get_graph = function (mname)
+{
+    let graph = storage_graph.getItem(mname); // params.graph = JSON.parse(params.graph);
+    if (graph === null)
+    {
+        return null;
+    }
+    else
+    {
+        return JSON.parse(graph);
+    }
+};
+
 app.post('/path_ab', async function (req, res)
 {
     let params = req.body;
@@ -95,41 +120,147 @@ app.post('/path_ab', async function (req, res)
         return res.end("WRONG ACCESS TOKEN try harder))0)");
     }
 
-    console.log('/path_ab params', params.provide_geocoding, typeof params.provide_geocoding);
+    console.log('/path_ab params', params);
     if (/*params.graph === undefined || */params.start === undefined)
     {
         console.log('wrong format!');
         return res.end("error: wrong format. refer to /doc for more info.");
     }
 
-    let map_name = params.map_name;
-    let storage_graph = new LocalStorage(`./storage_graph/`, Number.MAX_VALUE);
-    let graph = storage_graph.getItem(map_name);
-    // params.graph = JSON.parse(params.graph);
+    let mname_start = params.mname_start;
+    let mname_target = params.mname_target;
+    let start_name = params.start;
+    let target_name = params.target;
+    let start_tag = start_name;
+    let target_tag = target_name;
 
-    if (graph === null)
+    if (valid_mapname(mname_start))
+    {
+        console.log('format good map name 1');
+    }
+    else
+    {
+        console.log('not valid');
+    }
+
+    if (get_graph(mname_start) === null ||
+        get_graph(mname_target) === null)
     {
         console.log('attempt to refer to graph that does not exist!');
         return res.end("there is no map with that map_name :(");
     }
 
-    graph = JSON.parse(graph);
-
-    let start_tag = params.start;
-    let target_tag = params.target;
-    console.log({map_name});
-    if (params.provide_geocoding == true) //!!! == and not === !!!
+    if (params.provide_geocoding == true) // !!! == and not === !!!
     {
-        console.log('!!! provide_geocoding: ', params.provide_geocoding);
+        start_tag = geocoder.name2tag(mname_start, [start_name])[0];
+        target_tag = geocoder.name2tag(mname_target, [target_name])[0];
         // => name2tag
-        let geocode = geocoder.name2tag(map_name, [start_tag, target_tag]);
-        console.log('geocode before: name2tag: ', [start_tag, target_tag]);
-        start_tag = geocode[0];
-        target_tag = geocode[1];
+        console.log('geocode before: name2tag: ', [start_name, target_name]);
         console.log('geocode after: name2tag: ', [start_tag, target_tag]);
     }
-    let alg_res = alg.dijkstra(graph, start_tag, target_tag);
-    return res.send(alg_res);
+
+    let dij;
+    if (mname_start === mname_target) // on the same floor
+    {
+        dij = alg.dijkstra(get_graph(mname_start), start_tag, target_tag);
+    }
+    else // on different floors
+    {
+        // find all the portals on each floor todo: cache it
+        let mname = mname_start.substr(0, mname_start.indexOf(":"));
+        console.log({mname});
+        let sfloor = parseInt(mname_start.substr(mname_start.indexOf(":") + 1));
+        let tfloor = parseInt(mname_target.substr(mname_target.indexOf(":") + 1));
+        console.log({sfloor, tfloor});
+
+        let portal_last = [start_name, start_tag];
+        let res = {
+            target_reachable: true,
+            bp: [],
+            // d: d[target], // distance to get to the target node
+            // p, // non-linear path map for a->b p[b] = a
+            // bp: build_path(p, target), // linear path to the target in the array form
+        };
+
+        for (let f = sfloor; f <= tfloor; f++)
+        {
+            let g = get_graph(mname + ":" + f);
+            if (g === null)
+            {
+                console.log('attempt to refer to graph that does not exist!');
+                return res.end("there is no map with that map_name :(");
+            }
+
+            console.log('last portal ', portal_last);
+
+            console.log("mname", mname + ":" + f);
+            let storage_tag2name = new LocalStorage(`./storage_tag2name/${mname + ":" + f}/`, Number.MAX_VALUE);
+            let portals = [];
+            for (let tag in g)
+            {
+                let name = storage_tag2name.getItem(tag);
+                if (name === null)
+                {
+                    continue;
+                }
+                if (name.indexOf("portal_") !== -1) // contains portal_
+                {
+                    portals.push([name, tag]);
+
+                    // fix to issue with different coords on diff floors
+                    if (name === portal_last[0])
+                    {
+                        portal_last = [name, tag]; // update coords to new ones if changed
+                    }
+                }
+            }
+
+            console.log({portal_last});
+            console.log('portals', portals);
+            let portal_next, bp;
+            if (f !== tfloor)
+            {
+                dij = alg.dijkstra(g, portal_last[1]);
+                // console.log(dij);
+                let min_dist = Infinity;
+                // console.log('dijsktra p[]: ', dij.p);
+                // console.log('graph acquired', g);
+                for (let i in portals)
+                {
+                    let p = portals[i];
+                    console.log('our portal[i]', p, dij.d[p[1]]);
+                    if (dij.d[p[1]] < min_dist && // дело в дейкстре -- инфинити чота
+                        p[0] !== portal_last[0])
+                    {
+                        min_dist = dij.d[p[1]];
+                        portal_next = p;
+                    }
+                }
+                console.log('portal next', portal_next);
+                bp = alg.build_path(dij.p, portal_next ? portal_next[1] : undefined);
+            }
+            else
+            {
+                dij = alg.dijkstra(g, portal_last[1], target_tag);
+                bp = dij.bp;
+                // console.log('last floor p', dij.p);
+            }
+            if (bp === undefined)
+            {
+                res.target_reachable = false;
+                break;
+            }
+
+            res.bp = [...res.bp, ...bp];
+            console.log(res.bp);
+
+            portal_last = portal_next; // now 'portal_next' is last
+            // 1 no portal_1 -> portal_2
+        }
+
+        dij = res;
+    }
+    return res.send(dij);
 });
 
 

@@ -115,4 +115,5 @@ let test_graph = {
 module.exports = {
     dijkstra,
     test_graph,
+    build_path,
 };
