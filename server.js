@@ -221,7 +221,7 @@ app.post('/path_ab', async function (req, res)
             if (f !== tfloor)
             {
                 dij = alg.dijkstra(g, portal_last[1]);
-                // console.log(dij);
+                console.log(dij);
                 let min_dist = Infinity;
                 // console.log('dijsktra p[]: ', dij.p);
                 // console.log('graph acquired', g);

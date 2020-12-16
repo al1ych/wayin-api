@@ -264,9 +264,9 @@
         // adding grid
         let GRID_ACCURACY = parseFloat(document.getElementById("grid_accuracy_holder").value); // dx, dy  grid step
         const GRID_DENSITY = 5;
-        for (let y = 0; y <= max_elem_y + GRID_ACCURACY; y += GRID_ACCURACY)
+        for (let y = 0; y <= max_elem_y + GRID_ACCURACY * 5; y += GRID_ACCURACY)
         {
-            for (let x = 0; x <= max_elem_x + GRID_ACCURACY; x += GRID_ACCURACY)
+            for (let x = 0; x <= max_elem_x + GRID_ACCURACY * 5; x += GRID_ACCURACY)
             {
                 for (let t = 0; t < GRID_DENSITY; t++)
                 {
