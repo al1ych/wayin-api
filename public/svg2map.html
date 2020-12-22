@@ -42,8 +42,14 @@
        id="grid_accuracy_holder" style="position: fixed; right: 0; top: 75px;" value="30"
        placeholder="grid accuracy (1-40)">
 <button
-        id="draw_graph_button" style="position: fixed; right: 0; top: 100px;" value="30"
-        onclick="draw_graph()">Graph connectivity map</button>
+        id="draw_graph_button" style="position: fixed; right: 0; top: 100px;"
+        onclick="draw_brief_graph()">Brief connectivity test</button>
+<button
+        id="draw_connectivity_button" style="position: fixed; right: 0; top: 125px;"
+        onclick="draw_full_graph()">Full connectivity test</button>
+<button
+        id="draw_cada_ruta" style="position: fixed; right: 0; top: 150px;"
+        onclick="draw_cada_ruta()">Each route connectivity test</button>
 <br>
 
 <script type="text/javascript">
@@ -412,9 +418,10 @@
 
             // document.getElementById("output_java_code").textContent = JSON.stringify(response.graph);
             // document.getElementById("output_shops_code").textContent = JSON.stringify(response.shops);
-            window.output_json = JSON.stringify(response.graph);
-            // download_json(response.shops, `${window.geom_map.map_name}_n2t.json`);
-            // download_json(response.graph, `${window.geom_map.map_name}_map.json`);
+            window.response_graph = JSON.stringify(response.graph);
+            window.response_shops = JSON.stringify(response.shops);
+            download_json(response.shops, `${window.geom_map.map_name}_n2t.json`);
+            download_json(response.graph, `${window.geom_map.map_name}_map.json`);
 
             // const job_count = 20;
             // for (let i = 0; i < job_count; i++)
@@ -443,13 +450,13 @@
     }
 
 
-    function draw_graph(graph)
+    function draw_full_graph(graph)
     {
         if (graph === undefined) // not specified
         {
-            if (window.output_json)
+            if (window.response_graph)
             {
-                graph = JSON.parse(window.output_json);
+                graph = JSON.parse(window.response_graph);
             }
             else
             {
@@ -479,10 +486,87 @@
         }
     }
 
+    function draw_brief_graph(graph, shops) // only edges each v->u from shopset
+    {
+        if (graph === undefined) // not specified
+        {
+            if (window.response_graph)
+            {
+                graph = JSON.parse(window.response_graph);
+                shops = JSON.parse(window.response_shops);
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        console.log('draw this graph:', graph);
+        console.log('using these shops:', shops);
+
+        for (ind in shops)
+        {
+            let f = shops[ind][1];
+            let es = graph[f];
+
+            for (let i = 0; i < es.length; i++)
+            {
+                let p1 = f.split(',').map(x => parseFloat(x));
+                let p2 = es[i].t.split(',').map(x => parseFloat(x));
+
+                ctx.beginPath();
+                ctx.moveTo(p1[0], p1[1]);
+                ctx.lineTo(p2[0], p2[1]);
+                ctx.stroke();
+            }
+
+        }
+    }
+
+    function draw_cada_ruta(map_name, shops, floor) // only edges each v->u from shopset
+    {
+        if (shops === undefined)
+        {
+            shops = JSON.parse(window.response_shops);
+        }
+
+        console.log(`%cDraw cada ruta: ${shops}`, 'background-color: red');
+        console.log('Routes in total:', shops.length ** 2);
+
+        if (floor === undefined)
+        {
+            floor = prompt('floor #');
+        }
+
+        for (i in shops)
+        {
+            for (j in shops)
+            {
+                let s = shops[i][1];
+                let t = shops[j][1];
+
+                // console.log(`%sPath ${s} > ${t}`, 'background-color: yellow; color: black;')
+
+                pedir_path(undefined, s, t, false, floor, floor);
+
+                // for (let i = 0; i < es.length; i++)
+                // {
+                //     let p1 = f.split(',').map(x => parseFloat(x));
+                //     let p2 = es[i].t.split(',').map(x => parseFloat(x));
+                //
+                //     ctx.beginPath();
+                //     ctx.moveTo(p1[0], p1[1]);
+                //     ctx.lineTo(p2[0], p2[1]);
+                //     ctx.stroke();
+                // }
+            }
+        }
+    }
+
 
     const CLIENT_TOKEN = "tokeeFahngeisaela1raraup4Eu1Eitahghahkahf4AeCh3yuen2Ge9ahtoaneewchiekah6Eije0jee3quaey9omu7ahch2Ka7aey5poh3Geiphai3Nea9eiM9Ieyoi8thu2vaichagheo8thohCof4koo4aeRooghaiGhiVahShaengahDaiyohlseithaezaeteiThoo1awahr8ohMei5xe5evaezai3ma2gaemaireen5aKae4pkae2ePh2Quai4mahsuiP3gootie1epaevaiT5ooweichai1kie5iepohyasiewuangoongahphiechisup6ainaiheeH8kaeb9ee0eifahSheikeiDiegahcuwdie3eephaebahgu3aekaux8eeb5oDu5yaica0ahvi0fo7faeNg5aiRohwephuCeegh0ohlee4bahk3phi7uaciegh5Raejeithaa5ooghohzae8thu0IwoLeehaez4yaipaeSh3fierie1eete4fuseotoofoothoh4peiQuujoh7asahXaew8udievaKu4yohdeo0aeQueey8zi7Eem0eiMahl2fohroRooziedei1iejahph0evu5uophahthiphaepoh5vohR2BeZai9vooFoo9chaazohwooNgia6moh7chipoophiewohfah0zun9queepo0eirish8Nahs9chohc3theiWeeghaco7yoh6roohph9heyahphee2JaifeiphuzieTou1Iowee0Ii6choo9eethahf4Nee3itiathieph3aeshaipuo6yei4bee6hai3ey2OLahChe6eishahVaXi4aesa5ainekeigh3Shoh5auNeegamoh3phaChii3phaeTaiNuSheituzengah0peighaino3vue1eer5eihae6UtaeChaochoh9no0iquei7upoo8wieShai5aeshe3Xee4naphohcohz9uu4shahng3eR7rish1tazi1oob9Beichauvoozeeyowael6pah1lthah6oothohz3OoK1euru8ouJ3Vichohpheijai2loumiepahph3ReipohkecEeshiethue8che2ook7aeJoPhohchoht5oorulohkoom4thoh8Seeweiceu2tOicath5coothaiwaixae1Aigeed6IuPu6queesahkumieth6ahb5aeyeoh5ae";
 
-    function pedir_path(graph, start, target, provide_geocoding)
+    function pedir_path(graph, start, target, provide_geocoding, start_floor, target_floor)
     {
         console.log('starting pidiendo the path');
         console.log(`from ${start} to ${target}`);
@@ -497,6 +581,14 @@
         {
             target = prompt("enter target shop name");
         }
+        if (start_floor === undefined)
+        {
+            start_floor = prompt("enter start floor");
+        }
+        if (target_floor === undefined)
+        {
+            target_floor = prompt("enter target floor");
+        }
 
         $.ajax({
             type: 'POST',
@@ -507,8 +599,8 @@
                 target,
                 provide_geocoding,
                 // map_name: window.geom_map.map_name,
-                mname_start: document.getElementById("input_map_name").value + ":" + prompt("enter start floor"),
-                mname_target: document.getElementById("input_map_name").value + ":" + prompt("enter target floor"),
+                mname_start: document.getElementById("input_map_name").value + ":" + start_floor,
+                mname_target: document.getElementById("input_map_name").value + ":" + target_floor,
                 access_token: CLIENT_TOKEN,
             }),
             dataType: 'json',
