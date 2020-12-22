@@ -150,7 +150,8 @@ app.post('/path_ab', async function (req, res)
         return res.end("there is no map with that map_name :(");
     }
 
-    if (params.provide_geocoding == true) // !!! == and not === !!!
+    if (params.provide_geocoding === true ||
+        params.provide_geocoding === 'true')
     {
         start_tag = geocoder.name2tag(mname_start, [start_name])[0];
         target_tag = geocoder.name2tag(mname_target, [target_name])[0];

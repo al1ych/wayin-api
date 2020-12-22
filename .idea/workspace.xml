@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3ffdaad2-8c53-4cb6-b213-7b580772ac6e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/svg2map.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/svg2map.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage_graph/test%3A1" beforeDir="false" afterPath="$PROJECT_DIR$/storage_graph/test%3A1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage_graph/test%3A2" beforeDir="false" afterPath="$PROJECT_DIR$/storage_graph/test%3A2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage_graph/test%3A3" beforeDir="false" afterPath="$PROJECT_DIR$/storage_graph/test%3A3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +107,7 @@
       <workItem from="1608307935269" duration="12000" />
       <workItem from="1608386333056" duration="3595000" />
       <workItem from="1608668666309" duration="150000" />
-      <workItem from="1608671500369" duration="921000" />
+      <workItem from="1608671500369" duration="2354000" />
     </task>
     <task id="LOCAL-00001" summary="+cors">
       <created>1603311929978</created>
@@ -378,7 +375,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608161095448</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="download_json on">
+      <created>1608672836361</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1608672836361</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -386,7 +390,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="-Map +GeomMap" />
     <MESSAGE value="shop double coords" />
     <MESSAGE value="server path + graph arg" />
     <MESSAGE value="- ghost shops" />
@@ -411,6 +414,7 @@
     <MESSAGE value="server now does not accept graph as a param&#10;now works" />
     <MESSAGE value="+ portal system" />
     <MESSAGE value="+ portal system&#10;fixed bug with accuracy" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ portal system&#10;fixed bug with accuracy" />
+    <MESSAGE value="download_json on" />
+    <option name="LAST_COMMIT_MESSAGE" value="download_json on" />
   </component>
 </project>
