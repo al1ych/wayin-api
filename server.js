@@ -222,10 +222,7 @@ app.post('/path_ab', async function (req, res)
             if (f !== tfloor)
             {
                 dij = alg.dijkstra(g, portal_last[1]);
-                console.log(dij);
                 let min_dist = Infinity;
-                // console.log('dijsktra p[]: ', dij.p);
-                // console.log('graph acquired', g);
                 for (let i in portals)
                 {
                     let p = portals[i];
@@ -252,7 +249,8 @@ app.post('/path_ab', async function (req, res)
                 break;
             }
 
-            res.bp = [...res.bp, ...bp];
+            res.bp.push(bp);
+            // res.bp = [...res.bp, ...bp];
             console.log(res.bp);
 
             portal_last = portal_next; // now 'portal_next' is last
