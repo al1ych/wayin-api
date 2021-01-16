@@ -248,6 +248,11 @@ app.get('/doc', function (req, res)
     return res.send("Hello! To get info on how to use the API text me on TG: @aladdinych");
 });
 
+app.get('/cc', function (req, res)
+{
+    return res.sendFile(__dirname + "/public/control_center.html");
+});
+
 
 app.get('/test', function (req, res)
 {
