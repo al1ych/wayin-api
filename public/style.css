@@ -1,0 +1,44 @@
+#drop-area {
+    border: 2px dashed #ccc;
+    border-radius: 20px;
+    width: 360px;
+    height: 360px;
+    font-family: sans-serif;
+    right: 16px;
+    bottom: 16px;
+    position: fixed;
+    background-image: url(dd_img.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+#inputfile {
+    bottom: 16px;
+}
+
+
+#output_java_code {
+    width: 60%;
+    height: 5%;
+    opacity: 20%;
+    position: fixed;
+    left: 4px;
+    bottom: 5%;
+    visibility: hidden;
+    resize: none;
+}
+
+
+#output_shops_code {
+    width: 35%;
+    height: 5%;
+    opacity: 20%;
+    position: fixed;
+    right: 4px;
+    bottom: 5%;
+    visibility: hidden;
+    resize: none;
+}
+
+

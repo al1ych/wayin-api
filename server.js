@@ -11,7 +11,7 @@ app.use(express.json({strict: false, limit: '128mb'}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 const alg = require('./algos');
-const map2graph_worker = require('./map2graph_worker');
+// const map2graph_worker = require('./map2graph_worker');
 const geocoder = require('./geocoder');
 
 const ADMIN_TOKEN = "tokuak0Uoghohpha6eiSohr7gaifeith4eToe0coongeC9pai3thaV3sheDaech2utoodae9eeng8iasheiqu2eag8einiu5ou7xae7xeequooPheim5JoL9vo5BieiCoon3ohZazos1Ahl3zoothee7mie1aefepud3nie5Fa3DeeNoh6ahgh2ienakaeShi4Oohahkaingohtael9ohM4gah3haehaefaithaikahgoh6loogh3zaNephoocho3vai6poo5oomaengiemoo4shu8ujoo5gin9ooyauzeer9boh4shuoh2Iejukoht0sheiCheevahThai6fahQuash6eeV6aeshai4woaNgaxo7ooh8bah3iwidienae8ieLutaiquu6ath7ohg1Gohfaem0ohvaixiechohjuhahtieit6Cughoo4seX1xofi9deesaezahca9ahn1yah2zeXu6vaib4nosh9Eeb0quiChu6Cei0ih3hoze1aiheedi1oozoigh9rahKaePhain7wae1aeboozechah2oohgakeenoobeadi7cheeghiexe8ohDaera9Vaephiex6AichoiRohchee8aiHeequaeth5Aevei5ohyoz1Tien4thaiv4boh5veim6theepoashiethu2Ahl3AHa8ha9eeRe1ix8ki7izu9xeethooS8aeh3pha6IeQuooth4aec1aqu6xeish6Soosoo4haehai7ke1paeSie3tohveFaideeKeloh1Chohdai0Oyeiche1jahyoophooceLaeNg6so6nahp3wizeeThaiKeoVee4shiwi8esh2ahm6heDahsoLavai0mohtheiyoh6queexaenguic0thieVoh0quaitheen1uthohphooF5xingOogh6quu5theesai1shahquaix7eeshee9resh5elion6eezi0eChonai7oijpahsii5aw3eepe9johbaiYon8zaequiechoh0theitigi0logh3eeceeween3wee0xeo8Aenoofoh1aiSael4ahnoh4quaithejeicai0ooph1oovahc2Quaiteakou9quubeivee4reeph4ogeikahgai8phah9teip1Ti3Jaxeefie0ooyohlphe3aiboo7goochaiKeePheekeosheiruvieg6Ahpaij4ohw6nuu9iera1huz";
@@ -20,14 +20,6 @@ const CLIENT_TOKEN = "tokeeFahngeisaela1raraup4Eu1Eitahghahkahf4AeCh3yuen2Ge9aht
 
 // API INTERACTION INTERFACE
 
-/***
- * maps geom maps -> graph maps
- *
- * params:
- * - map (geom)
- *
- * returns distance from start to target (to every vertex if no target is provided)
- * */
 const asyncMiddleware = fn =>
     (req, res, next) =>
     {
@@ -76,16 +68,6 @@ app.post('/map2graph', async (req, res) =>
 });
 
 
-/***
- * finds path from start to target
- *
- * params:
- * - map_name: string - graph id
- * - start
- * - target (optional)
- *
- * returns distance from start to target (to every vertex if no target is provided)
- * */
 let valid_mapname = function (s)
 {
     if (s === undefined)
@@ -95,8 +77,8 @@ let valid_mapname = function (s)
     return s.indexOf(":") !== -1;
 };
 
-let storage_graph = new LocalStorage(`./storage_graph/`, Number.MAX_VALUE);
-
+let storage_graph = new LocalStorage(`./storage_graph/`, Number.MAX_VALUE); // todo gotta go
+// todo gotta go
 let get_graph = function (mname)
 {
     let graph = storage_graph.getItem(mname); // params.graph = JSON.parse(params.graph);
@@ -109,6 +91,7 @@ let get_graph = function (mname)
         return JSON.parse(graph);
     }
 };
+
 
 app.post('/path_ab', async function (req, res)
 {
@@ -164,6 +147,7 @@ app.post('/path_ab', async function (req, res)
     if (mname_start === mname_target) // on the same floor
     {
         dij = alg.dijkstra(get_graph(mname_start), start_tag, target_tag);
+        dij.bp = [dij.bp];
     }
     else // on different floors
     {
@@ -192,11 +176,9 @@ app.post('/path_ab', async function (req, res)
                 return res.end("there is no map with that map_name :(");
             }
 
-            console.log('last portal ', portal_last);
-
             console.log("mname", mname + ":" + f);
             let storage_tag2name = new LocalStorage(`./storage_tag2name/${mname + ":" + f}/`, Number.MAX_VALUE);
-            let portals = [];
+            let portals = []; // todo gotta go
             for (let tag in g)
             {
                 let name = storage_tag2name.getItem(tag);
@@ -241,7 +223,6 @@ app.post('/path_ab', async function (req, res)
             {
                 dij = alg.dijkstra(g, portal_last[1], target_tag);
                 bp = dij.bp;
-                // console.log('last floor p', dij.p);
             }
             if (bp === undefined)
             {
@@ -250,30 +231,24 @@ app.post('/path_ab', async function (req, res)
             }
 
             res.bp.push(bp);
-            // res.bp = [...res.bp, ...bp];
-            console.log(res.bp);
+            console.log('res.bp', res.bp);
 
-            portal_last = portal_next; // now 'portal_next' is last
-            // 1 no portal_1 -> portal_2
+            portal_last = portal_next;
         }
 
         dij = res;
     }
+    console.log('resulting dij bp', dij.bp);
     return res.send(dij);
 });
 
 
-/***
- * provides the user with basic info about the api and stuff
- * */
 app.get('/doc', function (req, res)
 {
     return res.send("Hello! To get info on how to use the API text me on TG: @aladdinych");
 });
 
-/***
- * to test get requests
- * */
+
 app.get('/test', function (req, res)
 {
     let tmp = {
@@ -282,16 +257,6 @@ app.get('/test', function (req, res)
     return res.send(tmp);
 });
 
-/***
- * provides the user with info about the project
- * */
-app.get("/about", function (req, res)
-{
-    res.sendFile(__dirname + "/public/about.html");
-});
-
-
-// SERVER START
 
 let server = app.listen(port, () =>
 {
