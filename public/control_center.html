@@ -10,21 +10,13 @@
            id="inputfile" style="position: fixed; left: 8px;">
 </div>
 <input name="inputfile"
-       id="accuracy_holder" style="position: fixed; right: 0; top: 50px;" value="10" placeholder="accuracy (1-100)">
+       id="accuracy_holder" style="position: fixed; right: 0; top: 75px;" value="10" placeholder="accuracy (1-100)">
 <input name="inputfile"
-       id="grid_accuracy_holder" style="position: fixed; right: 0; top: 75px;" value="30"
+       id="grid_accuracy_holder" style="position: fixed; right: 0; top: 100px;" value="30"
        placeholder="grid accuracy (1-40)">
 <button
-        id="draw_graph_button" style="position: fixed; right: 0; top: 100px;"
-        onclick="draw_brief_graph()">Brief test
-</button>
-<button
-        id="draw_connectivity_button" style="position: fixed; right: 0; top: 125px;"
-        onclick="draw_full_graph()">Full test
-</button>
-<button
         id="draw_cada_ruta" style="position: fixed; right: 0; top: 150px;"
-        onclick="draw_cada_ruta()">Shop2shop test
+        onclick="draw_cada_ruta()">shop2shop test
 </button>
 <br>
 <button
@@ -41,7 +33,7 @@
 <br/>
 <canvas id="ca" width="3000" height="3000" style="border: 1px dashed rgba(110,110,110,0.1);"></canvas>
 <br/>
-<svg style="visibility: hidden" width="1" height="1" viewBox="0 0 1 1" fill="none" stroke="black" stroke-width="5">
+<svg id="theSvg" style="visibility: hidden" width="1" height="1" viewBox="0 0 1 1" fill="none" stroke="black" stroke-width="5">
     <path id="srcPath" d="M100 10 A90 90 0 0 0 100 190A90 90 0 0 0 100 10z"/>
 </svg>
 

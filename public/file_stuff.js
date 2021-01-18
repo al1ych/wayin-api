@@ -1,21 +1,26 @@
 // UPLOAD
 
 let dropArea = document.getElementById('drop-area');
-['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-    dropArea.addEventListener(eventName, preventDefaults, false)
+['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName =>
+{
+    dropArea.addEventListener(eventName, preventDefaults, false);
 });
 
 dropArea.addEventListener('drop', handleDrop, false);
 
-function handleDrop(e) {
+function handleDrop(e)
+{
     let dt = e.dataTransfer;
     let files = dt.files;
     let f = files[0];
     let fr = new FileReader();
-    fr.onload = () => {
+    fr.onload = () =>
+    {
         geom2map(fr.result);
     };
+    draw_svg(); // draw orig svg?
     fr.readAsText(f);
+
 }
 
 function preventDefaults(e)
@@ -27,15 +32,15 @@ function preventDefaults(e)
 
 // file
 inputfile.addEventListener('change', function ()
+{
+    var fr = new FileReader();
+    fr.onload = function ()
     {
-        var fr = new FileReader();
-        fr.onload = function ()
-        {
-            geom2map(fr.result);
-        };
+        geom2map(fr.result);
+    };
 
-        fr.readAsText(this.files[0]);
-    });
+    fr.readAsText(this.files[0]);
+});
 
 var ctx;
 window.onload = function ()
@@ -44,11 +49,9 @@ window.onload = function ()
 };
 
 
-
 // download
 function download_json(o, file_name)
 {
-    return;
     var a = document.createElement("a");
     document.body.appendChild(a);
     a.style = "display: none";

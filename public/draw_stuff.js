@@ -1,74 +1,74 @@
-function draw_full_graph(graph)
-{
-    if (graph === undefined) // not specified
-    {
-        if (window.response_graph)
-        {
-            graph = JSON.parse(window.response_graph);
-        }
-        else
-        {
-            return;
-        }
-    }
-
-    console.log('draw this graph:', graph);
-
-    for (f in graph)
-    {
-        let es = graph[f];
-
-        for (let i = 0; i < es.length; i++)
-        {
-            let p1 = f.split(',').map(x => parseFloat(x));
-            let p2 = es[i].t.split(',').map(x => parseFloat(x));
-
-            ctx.beginPath();
-            ctx.moveTo(p1[0], p1[1]);
-            ctx.lineTo(p2[0], p2[1]);
-            ctx.stroke();
-        }
-
-    }
-}
-
-
-function draw_brief_graph(graph, shops) // only edges each v->u from shopset
-{
-    if (graph === undefined) // not specified
-    {
-        if (window.response_graph)
-        {
-            graph = JSON.parse(window.response_graph);
-            shops = JSON.parse(window.response_shops);
-        }
-        else
-        {
-            return;
-        }
-    }
-
-    console.log('draw this graph:', graph);
-    console.log('using these shops:', shops);
-
-    for (ind in shops)
-    {
-        let f = shops[ind][1];
-        let es = graph[f];
-
-        for (let i = 0; i < es.length; i++)
-        {
-            let p1 = f.split(',').map(x => parseFloat(x));
-            let p2 = es[i].t.split(',').map(x => parseFloat(x));
-
-            ctx.beginPath();
-            ctx.moveTo(p1[0], p1[1]);
-            ctx.lineTo(p2[0], p2[1]);
-            ctx.stroke();
-        }
-
-    }
-}
+// function draw_full_graph(graph)
+// {
+//     if (graph === undefined) // not specified
+//     {
+//         if (window.response_graph)
+//         {
+//             graph = JSON.parse(window.response_graph);
+//         }
+//         else
+//         {
+//             return;
+//         }
+//     }
+//
+//     console.log('draw this graph:', graph);
+//
+//     for (f in graph)
+//     {
+//         let es = graph[f];
+//
+//         for (let i = 0; i < es.length; i++)
+//         {
+//             let p1 = f.split(',').map(x => parseFloat(x));
+//             let p2 = es[i].t.split(',').map(x => parseFloat(x));
+//
+//             ctx.beginPath();
+//             ctx.moveTo(p1[0], p1[1]);
+//             ctx.lineTo(p2[0], p2[1]);
+//             ctx.stroke();
+//         }
+//
+//     }
+// }
+//
+//
+// function draw_brief_graph(graph, shops) // only edges each v->u from shopset
+// {
+//     if (graph === undefined) // not specified
+//     {
+//         if (window.response_graph)
+//         {
+//             graph = JSON.parse(window.response_graph);
+//             shops = JSON.parse(window.response_shops);
+//         }
+//         else
+//         {
+//             return;
+//         }
+//     }
+//
+//     console.log('draw this graph:', graph);
+//     console.log('using these shops:', shops);
+//
+//     for (ind in shops)
+//     {
+//         let f = shops[ind][1];
+//         let es = graph[f];
+//
+//         for (let i = 0; i < es.length; i++)
+//         {
+//             let p1 = f.split(',').map(x => parseFloat(x));
+//             let p2 = es[i].t.split(',').map(x => parseFloat(x));
+//
+//             ctx.beginPath();
+//             ctx.moveTo(p1[0], p1[1]);
+//             ctx.lineTo(p2[0], p2[1]);
+//             ctx.stroke();
+//         }
+//
+//     }
+// }
 
 
 function draw_cada_ruta(map_name, shops, floor) // only edges each v->u from shopset
@@ -76,6 +76,7 @@ function draw_cada_ruta(map_name, shops, floor) // only edges each v->u from sho
     if (shops === undefined)
     {
         shops = JSON.parse(window.response_shops);
+        // window.response_shops = JSON.stringify([["Mango","70.32,90.51"],["Henderson","145.96,131.78"],["Nike","182.16,179.02"],["1811","280.08,152.81"],["TGI Fridays","367.24,193.23"],["Timberland","322.93,157.15"],["ECCO","363.16,155.81"],["LUSH","398.63,155.4"],["UNOde50","431.25,155.81"],["Wolford","457.37,156.21"],["DKNY","486.09,156.21"],["Nespresso","514.4,139.78"],["Тутанхамон","512.31,164.62"],["Fabi","565.08,53.6"],["Brow Up&amp;Make Up","611.57,37.06"],["Karl Lagerfeld","629,59.03"],["Uniqlo","852.03,268.23"],["Camper","734.45,191.09"],["YVES ROCHER FRANCE","698.65,160.76"],["L’Occitance en Provence","698.65,138.85"],["ELEGANZZA","740.45,136.78"],["Baldinini","693.57,55.67"],["Ваш размер","668.36,37.06"],["NO ONE","746.45,59.6"],["LACOSTE","805.2,61.67"],["Uterque","842.25,62.6"],["Слепая курица","878.95,61.67"],["BML","906.38,61.67"],["12Storeez","938.33,61.67"],["Zara Home","999.93,64.67"],["ZARA","1080.31,128.78"],["Эконика","971.39,173.87"],["Massimo Dutti","860.74,163.76"],["Geox","526.62,56.6"],["Vans","486.27,56.6"],["Converse","438.99,56.6"],["Levi’s","397.03,56.6"],["Liu Jo","357.16,56.86"],["New Balance","315.44,56.86"],["Reebok","257.77,50.19"],["Adidas","153.92,48.04"]]);
     }
 
     console.log(`%cDraw cada ruta: ${shops}`, 'background-color: red');
@@ -86,27 +87,14 @@ function draw_cada_ruta(map_name, shops, floor) // only edges each v->u from sho
         floor = prompt('floor #');
     }
 
-    for (i in shops)
+    for (let i = 0; i < shops.length; i++)
     {
-        for (j in shops)
+        for (let j = i + 1; j < shops.length; j++)
         {
             let s = shops[i][1];
             let t = shops[j][1];
 
-            // console.log(`%sPath ${s} > ${t}`, 'background-color: yellow; color: black;')
-
             pedir_path(undefined, s, t, false, floor, floor);
-
-            // for (let i = 0; i < es.length; i++)
-            // {
-            //     let p1 = f.split(',').map(x => parseFloat(x));
-            //     let p2 = es[i].t.split(',').map(x => parseFloat(x));
-            //
-            //     ctx.beginPath();
-            //     ctx.moveTo(p1[0], p1[1]);
-            //     ctx.lineTo(p2[0], p2[1]);
-            //     ctx.stroke();
-            // }
         }
     }
 }
@@ -136,6 +124,23 @@ function draw_path(p)
 }
 
 
+
+function draw_svg()
+{
+    // let p = prompt('draw original svg?');
+    // if (p === '' || p === 'y' || p === 'yes')
+    // {
+    //     var svg64 = btoa(srcPath.getAttribute('d'));
+    //     console.log(svg64);
+    //     var b64Start = 'data:image/svg+xml;base64,';
+    //     var image64 = b64Start + svg64;
+    //     let img = new Image();
+    //     img.onload = function() {
+    //         ctx.drawImage(img, 0, 0);
+    //     }
+    //     img.src = image64;
+    // }
+}
 
 function geom2map(t)
 {
@@ -324,7 +329,9 @@ function geom2map(t)
 
     console.log('total walls:', total_walls);
 
-    pedir_map2graph(window.geom_map);
+    let p = prompt('for upload?');
+    if (p === '' || p === 'y' || p === 'yes')
+        pedir_map2graph(window.geom_map);
 }
 
 function decompose_svg(path, num)

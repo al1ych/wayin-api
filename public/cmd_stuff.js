@@ -30,6 +30,8 @@ let render_cmd = function (cmd)
 
                 let t = cmd.split(' ');
 
+                console.log(t);
+
                 pedir_path(
                     undefined,
                     t[1],

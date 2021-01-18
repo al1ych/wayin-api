@@ -1,6 +1,8 @@
+// INIT
+
 let LocalStorage = require('node-localstorage').LocalStorage;
 
-const max_direct_shop_distance = 65;
+const max_direct_shop_distance = 65; // 65
 
 // GEOM
 
@@ -12,11 +14,9 @@ let on_segment = function (px, py, qx, qy, rx, ry)
 
 let orientation = function (px, py, qx, qy, rx, ry)
 {
-    val = (qy - py) * (rx - qx) - (qx - px) * (ry - qy);
-    if (val == 0)
-    {
+    let val = (qy - py) * (rx - qx) - (qx - px) * (ry - qy);
+    if (val === 0)
         return 0;
-    }
     return (val > 0) ? 1 : 2;
 };
 
@@ -49,17 +49,10 @@ let segment_intersection = function (x1, y1, x2, y2, x3, y3, x4, y4)
     return false;
 };
 
-let pt_distance = function (x1, y1, x2, y2)
-{
-    return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
-};
+let pt_distance = (x1, y1, x2, y2) => Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
 
-let pt_distance_sqr = function (x1, y1, x2, y2)
-{
-    return (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2);
-};
+let pt_distance_sqr = (x1, y1, x2, y2) => (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2);
 
-// if graph is blank -- THIS IS THE MISTAKE
 let addEdge = function (g, f, t, c)
 {
     if (g[f] === undefined)
@@ -71,21 +64,42 @@ let addEdge = function (g, f, t, c)
     });
 };
 
+
+// FIREBASE
+
+let fa = require("firebase-admin");
+let sa = require("./serviceAccountKey.json");
+const initConfig = { // fa init config
+    credential: fa.credential.cert(sa),
+    databaseURL: "https://wayin-29f9d.firebaseio.com",
+    storageBucket: "wayin-29f9d.appspot.com",
+    apiKey: "AIzaSyD_1afT1rrma-DOSAICdmG8X9xALYH9lgY",
+    projectId: "wayin-29f9d",
+    messagingSenderId: "1001031945918",
+    appId: "1:1001031945918:web:a9235f6e0e5122b16e98ef",
+    measurementId: "G-G2ZPKCYJ7K",
+};
+fa.initializeApp(initConfig);
+let db = fa.database(); // realtime db
+
+let push_graph = async function (graph, mId)
+{
+    console.log('push graph accessed');
+    await db.ref(`maps/${mId}`).update({graph: JSON.stringify(graph)});
+    console.log('push graph finished');
+};
+
+
+// ALGO
+
 // takes map (geom) :
 // returns graph
 // todo reduce time complexity n^3 -> n^2
 
-let map2graph = function ({shops, walls, map_name})
+let map2graph = async function ({shops, walls, map_name})
 {
     console.log('starting map2graph', {shops_len: shops.length, walls_len: walls.length});
-    // console.log('estimated time:', ((shops.length + walls.length) / 5707) * (199780), 'ms');
-    console.time('map2graph');
 
-    // localStorage.setItem('myFirstKey', 'myFirstValue');
-    // console.log(localStorage.getItem('myFirstKey'));
-
-    // let shops = map.shops;
-    // let walls = map.walls;
     let graph = {}; // tag -> adjacent vertices list
 
     let counter = 0;
@@ -120,7 +134,6 @@ let map2graph = function ({shops, walls, map_name})
         }
     }
 
-    console.timeEnd('map2graph');
     console.log('finishing map2graph', shops.length, walls.length, counter);
     let shops_mapping = [];
     let storage_tag2name = new LocalStorage(`./storage_tag2name/${map_name}/`, Number.MAX_VALUE);
@@ -136,16 +149,26 @@ let map2graph = function ({shops, walls, map_name})
     });
     let storage_graph = new LocalStorage(`./storage_graph/`, Number.MAX_VALUE);
     storage_graph.setItem(map_name, JSON.stringify(graph));
+    // await push_graph(graph, map_name);
     console.log({shops_mapping});
-    return {graph, shops: shops_mapping};
+    return {shops: shops_mapping};
+    // process.exit(0);
 };
 
 
 const {isMainThread, workerData, parentPort} = require('worker_threads');
-if (!isMainThread)
+async function f()
 {
-    parentPort.postMessage(JSON.stringify(map2graph(workerData)));
+    if (!isMainThread)
+    {
+        let res = await map2graph(workerData);
+        console.log('we got the res on worker');
+        parentPort.postMessage(JSON.stringify(res));
+        // parentPort.close();
+    }
 }
+
+f().then(r => console.log('f finished on worker'));
 
 
 // module.exports = {

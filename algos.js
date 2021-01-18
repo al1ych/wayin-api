@@ -71,7 +71,7 @@ let dijkstra = function (graph, start, target)
     }
     console.log('finishing dijkstra');
     // console.log('bp', res.bp);
-    console.log('dijkstra returns', res);
+    // console.log('dijkstra returns', res);
     return res;
 };
 

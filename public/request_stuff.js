@@ -17,8 +17,6 @@ function pedir_map2graph()
         return;
     }
 
-    // delete localStorage['token']; // debug
-
     let token;
     if (localStorage['token'] === undefined)
     {
@@ -71,18 +69,10 @@ function pedir_map2graph()
 
         // document.getElementById("output_java_code").textContent = JSON.stringify(response.graph);
         // document.getElementById("output_shops_code").textContent = JSON.stringify(response.shops);
-        window.response_graph = JSON.stringify(response.graph);
+        // window.response_graph = JSON.stringify(response.graph);
         window.response_shops = JSON.stringify(response.shops);
         download_json(response.shops, `${window.geom_map.map_name}_n2t.json`);
-        download_json(response.graph, `${window.geom_map.map_name}_map.json`);
-
-        // const job_count = 20;
-        // for (let i = 0; i < job_count; i++)
-        // {
-        // from_shop = choose_shop();
-        // to_shop = choose_shop();
-        // pedir_path(response.graph, from_shop.name, to_shop.name, true);
-        // }
+        // download_json(response.graph, `${window.geom_map.map_name}_map.json`);
     });
 }
 
@@ -106,6 +96,8 @@ function pedir_path(graph, start, target, provide_geocoding, start_floor, target
     {
         target_floor = prompt("enter target floor");
     }
+
+    console.log('mname_start', (input_map_name.value ? input_map_name.value + ":" : "") + start_floor);
 
     $.ajax({
         type: 'POST',
@@ -131,13 +123,16 @@ function pedir_path(graph, start, target, provide_geocoding, start_floor, target
             return;
         }
 
-        let bp
-        if (show_floor)
-            bp = response.bp[show_floor - 1];
-        else
-            bp = response.bp[target_floor - 1];
+        let bp;
+        // if (show_floor)
+        //     bp = response.bp[show_floor - 1];
+        // else
+            bp = response.bp[target_floor - start_floor];
 
+        console.log('response', response.bp, typeof show_floor, show_floor !== undefined, target_floor);
+        console.log('the bp', bp);
         let path = bp.map(c => (c.split(',').map(x => parseFloat(x))));
+        console.log('the path', path);
 
         console.log({response});
         console.log('bp', bp);
