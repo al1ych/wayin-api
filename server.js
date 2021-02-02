@@ -16,6 +16,7 @@ const CLIENT_TOKEN = "tokeeFahngeisaela1raraup4Eu1Eitahghahkahf4AeCh3yuen2Ge9aht
 
 // FIREBASE STUFF
 
+/*
 let fa = require("firebase-admin");
 let sa = require("./serviceAccountKey.json");
 const initConfig = { // fa init config
@@ -30,6 +31,7 @@ const initConfig = { // fa init config
 };
 fa.initializeApp(initConfig);
 let db = fa.database(); // realtime db
+*/
 
 let pull_graph = async function (mId)
 {
