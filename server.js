@@ -182,7 +182,6 @@ app.post('/path_ab', async function (req, res)
         let tfloor = parseInt(mname_target.substr(mname_target.indexOf(":") + 1));
         console.log({sfloor, tfloor});
 
-        let portal_last = [start_name, start_tag];
         let res = {
             target_reachable: true,
             bp: [],
@@ -193,6 +192,8 @@ app.post('/path_ab', async function (req, res)
 
         let directionIncrement = (sfloor <= tfloor ? +1 : -1);
         let direction = (sfloor <= tfloor ? "u" : "d"); // up down
+        let portal_last = [start_name, start_tag, direction];
+
         console.log("direction increment", directionIncrement);
         console.log("direction", direction);
         for (let f = sfloor; (sfloor <= tfloor ? f <= tfloor : f >= tfloor); f += directionIncrement)
@@ -216,13 +217,13 @@ app.post('/path_ab', async function (req, res)
                 }
                 if (name.indexOf("portal") !== -1) // contains portal_
                 {
-                    let portalName = name; // string name
+                    let portalName = name.substring(0, 7) + name.substr(9); // string name
                     let portalTag = tag; // coords
                     let portalDirection = name[name.indexOf("portal") + 7]; // u / d (up / down)
                     portals.push([portalName, portalTag, portalDirection]);
 
                     // fix to issue with different coords on diff floors
-                    if (name === portal_last[0])
+                    if (portalName === portal_last[0])
                     {
                         portal_last = [portalName, portalTag, portalDirection]; // update coords to new ones if changed
                     }
@@ -240,9 +241,11 @@ app.post('/path_ab', async function (req, res)
                 {
                     let p = portals[i];
                     console.log('considering next portal', p, dij.d[p[1]]);
+                    if (p[2] === direction)
+                        console.log('p[2] = direction', p[2], direction);
                     if (dij.d[p[1]] < min_dist && // min distance
                         p[0] !== portal_last[0] && // not initial portal
-                        portal_last[2] === direction) // we're going this direction
+                        p[2] === direction) // we're going this direction
                     {
                         min_dist = dij.d[p[1]];
                         portal_next = p;
