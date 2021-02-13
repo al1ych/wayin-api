@@ -67,27 +67,27 @@ let addEdge = function (g, f, t, c)
 
 // FIREBASE
 
-let fa = require("firebase-admin");
-let sa = require("./serviceAccountKey.json");
-const initConfig = { // fa init config
-    credential: fa.credential.cert(sa),
-    databaseURL: "https://wayin-29f9d.firebaseio.com",
-    storageBucket: "wayin-29f9d.appspot.com",
-    apiKey: "AIzaSyD_1afT1rrma-DOSAICdmG8X9xALYH9lgY",
-    projectId: "wayin-29f9d",
-    messagingSenderId: "1001031945918",
-    appId: "1:1001031945918:web:a9235f6e0e5122b16e98ef",
-    measurementId: "G-G2ZPKCYJ7K",
-};
-fa.initializeApp(initConfig);
-let db = fa.database(); // realtime db
-
-let push_graph = async function (graph, mId)
-{
-    console.log('push graph accessed');
-    await db.ref(`maps/${mId}`).update({graph: JSON.stringify(graph)});
-    console.log('push graph finished');
-};
+// let fa = require("firebase-admin");
+// let sa = require("./serviceAccountKey.json");
+// const initConfig = { // fa init config
+//     credential: fa.credential.cert(sa),
+//     databaseURL: "https://wayin-29f9d.firebaseio.com",
+//     storageBucket: "wayin-29f9d.appspot.com",
+//     apiKey: "AIzaSyD_1afT1rrma-DOSAICdmG8X9xALYH9lgY",
+//     projectId: "wayin-29f9d",
+//     messagingSenderId: "1001031945918",
+//     appId: "1:1001031945918:web:a9235f6e0e5122b16e98ef",
+//     measurementId: "G-G2ZPKCYJ7K",
+// };
+// fa.initializeApp(initConfig);
+// let db = fa.database(); // realtime db
+//
+// let push_graph = async function (graph, mId)
+// {
+//     console.log('push graph accessed');
+//     await db.ref(`maps/${mId}`).update({graph: JSON.stringify(graph)});
+//     console.log('push graph finished');
+// };
 
 
 // ALGO
