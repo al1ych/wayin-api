@@ -208,7 +208,7 @@ app.post('/path_ab', async function (req, res)
                 {
                     continue;
                 }
-                if (name.indexOf("portal_") !== -1) // contains portal_
+                if (name.indexOf("portal") !== -1) // contains portal_
                 {
                     portals.push([name, tag]);
 
