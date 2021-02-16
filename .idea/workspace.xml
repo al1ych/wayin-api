@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3ffdaad2-8c53-4cb6-b213-7b580772ac6e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,14 +129,7 @@
       <workItem from="1610977417055" duration="13629000" />
       <workItem from="1611333942527" duration="25000" />
       <workItem from="1612284790772" duration="228000" />
-      <workItem from="1613244875828" duration="5707000" />
-    </task>
-    <task id="LOCAL-00005" summary="+svg2map">
-      <created>1603572775295</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1603572775295</updated>
+      <workItem from="1613244875828" duration="6442000" />
     </task>
     <task id="LOCAL-00006" summary="bug когда все файлы в одну строчкуне работают">
       <created>1603645170931</created>
@@ -475,7 +467,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613250309762</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="portals fixed">
+      <created>1613251161401</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1613251161401</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -483,7 +482,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="+ map_name cannot be empty" />
     <MESSAGE value="+ security token" />
     <MESSAGE value="- some clientside security" />
     <MESSAGE value="+ bugfix server-side" />
@@ -508,6 +506,7 @@
     <MESSAGE value="попытка убрать мапы с локала на файрбазу" />
     <MESSAGE value="формат нейма портала теперь не так важен -- главное чтобы было слово &quot;portal&quot; в нем&#10;примеры: portal 123; portal#1234; portal___123; portal_123." />
     <MESSAGE value="+ new atrium (with portal directions)" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ new atrium (with portal directions)" />
+    <MESSAGE value="portals fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="portals fixed" />
   </component>
 </project>
