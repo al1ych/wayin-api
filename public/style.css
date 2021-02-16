@@ -1,11 +1,11 @@
 #drop-area {
-    border: 2px dashed #ccc;
+    border: 2px dashed #bbb;
     border-radius: 20px;
-    width: 360px;
-    height: 360px;
+    width: 98vw;
+    height: 50vh;
     font-family: sans-serif;
-    right: 16px;
-    bottom: 16px;
+    right: 1vw;
+    bottom: 1vh;
     position: fixed;
     background-image: url(dd_img.png);
     background-repeat: no-repeat;
