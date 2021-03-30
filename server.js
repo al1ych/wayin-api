@@ -153,7 +153,9 @@ app.post('/path_ab', async function (req, res)
     if (await get_graph(mname_start) === null ||
         await get_graph(mname_target) === null)
     {
-        console.log('attempt to refer to graph that does not exist!');
+        console.log('attempt!');
+        console.log('attempt to refer to graph ', mname_start, ' that does not exist!');
+        console.log('attempt to refer to graph ', mname_target, ' that does not exist!');
         return res.end("there is no map with that map_name :(");
     }
 
@@ -182,7 +184,7 @@ app.post('/path_ab', async function (req, res)
         let tfloor = parseInt(mname_target.substr(mname_target.indexOf(":") + 1));
         console.log({sfloor, tfloor});
 
-        let res = {
+        let result = {
             target_reachable: true,
             bp: [],
             // d: d[target], // distance to get to the target node
@@ -198,12 +200,16 @@ app.post('/path_ab', async function (req, res)
         console.log("direction", direction);
         for (let f = sfloor; (sfloor <= tfloor ? f <= tfloor : f >= tfloor); f += directionIncrement)
         {
-            let g = await get_graph(mname + ":" + f);
+            console.log(mname + ":" + f);
+            // let g = await get_graph(mname + ":" + f);
+
+            let g = graph_storage.getItem(mname + ":" + f);
             if (g === null)
             {
                 console.log('attempt to refer to graph that does not exist!');
                 return res.end("there is no map with that map_name :(");
             }
+            g = JSON.parse(g);
 
             console.log("mname", mname + ":" + f);
             let storage_tag2name = new LocalStorage(`./storage_tag2name/${mname + ":" + f}/`, Number.MAX_VALUE);
@@ -235,6 +241,7 @@ app.post('/path_ab', async function (req, res)
             let portal_next, bp;
             if (f !== tfloor)
             {
+                console.log('soon dijkstra from', portal_last);
                 dij = alg.dijkstra(g, portal_last[1]);
                 let min_dist = Infinity;
                 for (let i in portals)
@@ -261,17 +268,17 @@ app.post('/path_ab', async function (req, res)
             }
             if (bp === undefined)
             {
-                res.target_reachable = false;
+                result.target_reachable = false;
                 break;
             }
 
-            res.bp.push(bp);
-            console.log('res.bp', res.bp);
+            result.bp.push(bp);
+            console.log('result.bp', result.bp);
 
             portal_last = portal_next;
         }
 
-        dij = res;
+        dij = result;
     }
     console.log('resulting dij bp', dij.bp);
     return res.send(dij);
