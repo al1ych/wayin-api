@@ -147,14 +147,9 @@
       <workItem from="1617999042134" duration="2656000" />
       <workItem from="1618521449062" duration="4000" />
       <workItem from="1619094293307" duration="6469000" />
-      <workItem from="1619121267471" duration="797000" />
-    </task>
-    <task id="LOCAL-00011" summary="-Map +GeomMap">
-      <created>1604330867221</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1604330867221</updated>
+      <workItem from="1619121267471" duration="1451000" />
+      <workItem from="1619122917441" duration="720000" />
+      <workItem from="1619123706235" duration="7099000" />
     </task>
     <task id="LOCAL-00012" summary="shop double coords">
       <created>1604331239147</created>
@@ -492,7 +487,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617130111279</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="added atrium2">
+      <created>1619122222211</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1619122222212</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -500,7 +502,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="+ shops are now red on web client" />
     <MESSAGE value="server now does not accept graph as a param" />
     <MESSAGE value="server now does not accept graph as a param&#10;now works" />
     <MESSAGE value="+ portal system" />
@@ -525,6 +526,7 @@
     <MESSAGE value="drop area is now bigger and relative to the viewport" />
     <MESSAGE value="bugfix: atrium:2 was not preloaded" />
     <MESSAGE value="atrium1 remodel" />
-    <option name="LAST_COMMIT_MESSAGE" value="atrium1 remodel" />
+    <MESSAGE value="added atrium2" />
+    <option name="LAST_COMMIT_MESSAGE" value="added atrium2" />
   </component>
 </project>

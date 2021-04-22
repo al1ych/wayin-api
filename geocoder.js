@@ -1,5 +1,4 @@
 let LocalStorage = require('node-localstorage').LocalStorage;
-const MAX_FLOORS = 80;
 
 
 let tag2name = (map_name, cs) =>
@@ -24,13 +23,11 @@ let name2tag = (map_name, cs) =>
 let floor_by_name = (map_name) =>
 {
     let i = 1;
-    let name2tag_storage;
+    let name2tag_storage = new LocalStorage(`./storage_name2tag/`, Number.MAX_VALUE);
     while (true)
     {
-        name2tag_storage = new LocalStorage(`./storage_name2tag/`, Number.MAX_VALUE);
-        if (name2tag_storage.getItem(map_name + ":" + i) === null) {
+        if (name2tag_storage.getItem(map_name + ":" + i) === null)
             break;
-        }
         console.log('exists floor: ', i);
         i++;
     }
