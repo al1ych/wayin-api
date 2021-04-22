@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3ffdaad2-8c53-4cb6-b213-7b580772ac6e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geocoder.js" beforeDir="false" afterPath="$PROJECT_DIR$/geocoder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage_graph/atrium%3A2" beforeDir="false" afterPath="$PROJECT_DIR$/storage_graph/atrium%3A2" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +47,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.15.3" />
-    <property name="javascript.nodejs.core.library.typings.version" value="10.17.56" />
+    <property name="javascript.nodejs.core.library.typings.version" value="10.17.58" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -139,14 +142,12 @@
       <workItem from="1613468703559" duration="2128000" />
       <workItem from="1613751346995" duration="53000" />
       <workItem from="1617049868887" duration="3800000" />
-      <workItem from="1617129361505" duration="278000" />
-    </task>
-    <task id="LOCAL-00010" summary="-Map +GeomMap">
-      <created>1604330818043</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1604330818043</updated>
+      <workItem from="1617129361505" duration="1099000" />
+      <workItem from="1617998871571" duration="104000" />
+      <workItem from="1617999042134" duration="2656000" />
+      <workItem from="1618521449062" duration="4000" />
+      <workItem from="1619094293307" duration="6469000" />
+      <workItem from="1619121267471" duration="797000" />
     </task>
     <task id="LOCAL-00011" summary="-Map +GeomMap">
       <created>1604330867221</created>
@@ -484,7 +485,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617097869407</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="atrium1 remodel">
+      <created>1617130111279</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1617130111279</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -492,7 +500,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="+ web client now uses client token" />
     <MESSAGE value="+ shops are now red on web client" />
     <MESSAGE value="server now does not accept graph as a param" />
     <MESSAGE value="server now does not accept graph as a param&#10;now works" />
@@ -517,6 +524,7 @@
     <MESSAGE value="placeholder accuracy (2nd) -&gt; 21" />
     <MESSAGE value="drop area is now bigger and relative to the viewport" />
     <MESSAGE value="bugfix: atrium:2 was not preloaded" />
-    <option name="LAST_COMMIT_MESSAGE" value="bugfix: atrium:2 was not preloaded" />
+    <MESSAGE value="atrium1 remodel" />
+    <option name="LAST_COMMIT_MESSAGE" value="atrium1 remodel" />
   </component>
 </project>

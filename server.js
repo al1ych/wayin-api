@@ -112,7 +112,6 @@ let graph_storage = new LocalStorage(`./storage_graph/`, Number.MAX_VALUE);
 let get_graph = async function (mname)
 {
     let graph = graph_storage.getItem(mname);
-    // let graph = await pull_graph(mname);
     return (graph !== null ? JSON.parse(graph) : null);
 };
 
@@ -121,10 +120,12 @@ app.post('/path_ab', async function (req, res)
 {
     let params = req.body;
 
+    console.log(params);
+    console.log(params.access_token);
     if (params.access_token !== CLIENT_TOKEN)
     {
-        console.log('wrong client token attempt', params.token);
-        return res.end("WRONG ACCESS TOKEN try harder))0)");
+        console.log('wrong client token attempt: ', params.token);
+        return res.end("WRONG ACCESS TOKEN :<");
     }
 
     console.log('/path_ab params', params);
