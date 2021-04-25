@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3ffdaad2-8c53-4cb6-b213-7b580772ac6e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geocoder.js" beforeDir="false" afterPath="$PROJECT_DIR$/geocoder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,13 +150,7 @@
       <workItem from="1619134416395" duration="17000" />
       <workItem from="1619135724365" duration="599000" />
       <workItem from="1619204106597" duration="27000" />
-    </task>
-    <task id="LOCAL-00013" summary="server path + graph arg">
-      <created>1604331570662</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1604331570662</updated>
+      <workItem from="1619348988217" duration="1470000" />
     </task>
     <task id="LOCAL-00014" summary="server path + graph arg">
       <created>1604332130974</created>
@@ -496,15 +488,32 @@
       <option name="project" value="LOCAL" />
       <updated>1619130928158</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="added something?">
+      <created>1619349073181</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1619349073181</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="server now does not accept graph as a param&#10;now works" />
     <MESSAGE value="+ portal system" />
     <MESSAGE value="+ portal system&#10;fixed bug with accuracy" />
     <MESSAGE value="download_json on" />
@@ -529,6 +538,7 @@
     <MESSAGE value="atrium1 remodel" />
     <MESSAGE value="added atrium2" />
     <MESSAGE value="session cache" />
-    <option name="LAST_COMMIT_MESSAGE" value="session cache" />
+    <MESSAGE value="added something?" />
+    <option name="LAST_COMMIT_MESSAGE" value="added something?" />
   </component>
 </project>
