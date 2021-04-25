@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geocoder.js" beforeDir="false" afterPath="$PROJECT_DIR$/geocoder.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage_graph/atrium%3A2" beforeDir="false" afterPath="$PROJECT_DIR$/storage_graph/atrium%3A2" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,14 +148,10 @@
       <workItem from="1619094293307" duration="6469000" />
       <workItem from="1619121267471" duration="1451000" />
       <workItem from="1619122917441" duration="720000" />
-      <workItem from="1619123706235" duration="7099000" />
-    </task>
-    <task id="LOCAL-00012" summary="shop double coords">
-      <created>1604331239147</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1604331239148</updated>
+      <workItem from="1619123706235" duration="9440000" />
+      <workItem from="1619134416395" duration="17000" />
+      <workItem from="1619135724365" duration="599000" />
+      <workItem from="1619204106597" duration="27000" />
     </task>
     <task id="LOCAL-00013" summary="server path + graph arg">
       <created>1604331570662</created>
@@ -494,7 +489,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619122222212</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="session cache">
+      <created>1619130928158</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1619130928158</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -502,7 +504,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="server now does not accept graph as a param" />
     <MESSAGE value="server now does not accept graph as a param&#10;now works" />
     <MESSAGE value="+ portal system" />
     <MESSAGE value="+ portal system&#10;fixed bug with accuracy" />
@@ -527,6 +528,7 @@
     <MESSAGE value="bugfix: atrium:2 was not preloaded" />
     <MESSAGE value="atrium1 remodel" />
     <MESSAGE value="added atrium2" />
-    <option name="LAST_COMMIT_MESSAGE" value="added atrium2" />
+    <MESSAGE value="session cache" />
+    <option name="LAST_COMMIT_MESSAGE" value="session cache" />
   </component>
 </project>

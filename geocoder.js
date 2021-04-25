@@ -13,29 +13,33 @@ let name2tag = (map_name, cs) =>
     // todo:
     // 1. search engine
     // 2. search for the correct floor
-    floor_by_name(map_name);
+    // floor_by_shopname(map_name);
     let name2tag_storage = new LocalStorage(`./storage_name2tag/${map_name}/`, Number.MAX_VALUE);
     return cs.map(c => name2tag_storage.getItem(c));
 };
 
 
 // search while not map null
-let floor_by_name = (map_name) =>
+const MAX_FLOORS = 10;
+let floor_by_shopname = (shop_name, map_name) =>
 {
-    let i = 1;
-    let name2tag_storage = new LocalStorage(`./storage_name2tag/`, Number.MAX_VALUE);
-    while (true)
+    for (let i = 1; i <= MAX_FLOORS; i++)
     {
-        if (name2tag_storage.getItem(map_name + ":" + i) === null)
-            break;
-        console.log('exists floor: ', i);
-        i++;
+        let name2tag_storage = new LocalStorage(`./storage_name2tag/${map_name + ":" + i}`, Number.MAX_VALUE);
+        console.log('checking map_name', map_name + ":" + i);
+        if (name2tag_storage.getItem(shop_name) !== null)
+        {
+            console.log('shop', shop_name, 'was found on floor', i);
+            return i;
+        }
     }
+    console.log('shop', shop_name, 'was not found :<');
+    return null;
 };
 
 
 module.exports = {
     tag2name,
     name2tag,
-    floor_by_name
+    floor_by_shopname,
 };
