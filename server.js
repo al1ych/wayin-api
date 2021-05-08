@@ -269,6 +269,7 @@ app.post('/route', async function (req, res)
             else
             {
                 dij = alg.dijkstra(g, portal_last[1], target_tag);
+                dij.bp.unshift(portal_last[1]);
                 bp = dij.bp;
             }
             if (bp === undefined)
